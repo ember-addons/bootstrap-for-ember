@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {{partial "header"}}
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip navigation</a>
+
+    <!-- Docs master nav -->
+    {{partial "nav-main"}}
+
+    <!-- Docs page layout -->
+    <div class="bs-header" id="content">
+      <div class="container">
+        <p>{{ page.lead }}</p>
+        {{partial "ads"}}
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="bs-sidebar hidden-print" role="complementary">
+              <ul class="nav bs-sidenav">
+                {{partial leftnav}}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+          {{ outlet }}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        {{partial social-buttons}}
+      </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    {{partial footer}}
+  </body>
+</html>

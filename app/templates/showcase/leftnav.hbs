@@ -1,0 +1,5 @@
+{{#each item in controller}}
+    <li>
+        <a {{action "select" item}} style="cursor: pointer"></button> {{item.title}}</a>
+    </li>
+{{/each}}
