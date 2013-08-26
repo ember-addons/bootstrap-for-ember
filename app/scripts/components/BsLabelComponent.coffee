@@ -1,4 +1,4 @@
-Bootstrap.BsLabelComponent = Ember.Component.extend(Bootstrap.TypeSupport, Ember.Evented,
+Bootstrap.BsLabelComponent = Ember.Component.extend(Bootstrap.TypeSupport,
     tagName: 'span'
     classNames: ['label']
     classTypePrefix: 'label'
