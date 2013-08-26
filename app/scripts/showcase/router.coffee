@@ -3,4 +3,5 @@ Showcase.Router.map(() ->
         @route 'alert'
         @route 'label'
         @route 'badge'
+        @route 'well'
 )

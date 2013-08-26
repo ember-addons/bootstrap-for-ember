@@ -6,6 +6,7 @@ Showcase = window.Showcase = Ember.Application.create(
     BsAlertComponent: Bootstrap.BsAlertComponent
     BsLabelComponent: Bootstrap.BsLabelComponent
     BsBadgeComponent: Bootstrap.BsBadgeComponent
+    BsWellComponent: Bootstrap.BsWellComponent
 )
 
 Ember.Handlebars.registerHelper 'raw', (value) ->
