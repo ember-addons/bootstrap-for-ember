@@ -18,4 +18,4 @@ the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
 
 > A picture is worth a thousand words
 
-### [See ShowCase](ember-addons.github.io/bootstrap-for-ember)
+### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember)
