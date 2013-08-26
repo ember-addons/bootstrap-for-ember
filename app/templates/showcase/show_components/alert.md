@@ -1,43 +1,56 @@
 # Alert
 
 ## Usage Examples
-{{bs-alert message="A warning alert with simple message." type="warning"}}
+
+<div class="bs-example">
+    {{bs-alert message="A warning alert with simple message." type="warning"}}
+</div>
 
 ```html
 \{\{bs-alert message="A warning alert with simple message." type="warning"\}\}
 ```
 
-{{bs-alert message="With close button" type="warning" dismiss=true}}
+<div class="bs-example">
+    {{bs-alert message="With close button" type="warning" dismiss=true}}
+</div>
 
 ```html
 \{\{bs-alert message="With close button" type="warning" dismiss=true\}\}
 ```
 
-{{bs-alert message="Close button will fade" type="warning" dismiss=true fade=true}}
+<div class="bs-example">
+    {{bs-alert message="Close button will fade" type="warning" dismiss=true fade=true}}
+</div>
 
 ```html
     \{\{bs-alert message="Close button will fade" type="warning" dismiss=true fade=true\}\}
 ```
 
-{{bs-alert message="Dismissed after 5 seconds!!" type="info" dismissAfter=5}}
+<div class="bs-example">
+    {{bs-alert message="Dismissed after 5 seconds!!" type="info" dismissAfter=5}}
+</div>
 
 ```html
     \{\{bs-alert message="Dismissed after 5 seconds" type="info" dismissAfter=5\}\}
 ```
 
-{{bs-alert message="Other types such as Sucess" type="success"}}
+<div class="bs-example">
+    {{bs-alert message="Other types such as Sucess" type="success"}}
+</div>
 
 ```html
     \{\{bs-alert message="Other types such as Sucess" type="success"\}\}
 ```
 
-{{#bs-alert type="danger"}}
-<h4 class="alert-heading">Oh snap! You got an error!</h4>
-<p>Alert can also be used in a <strong>block form</strong>.</p>
-<p>
-<button class="btn btn-danger" {{action "submit"}}>Take this action</button> <a class="btn btn-default">Or do this</a>
-</p>
-{{/bs-alert}}
+<div class="bs-example">
+    {{#bs-alert type="danger"}}
+    <h4 class="alert-heading">Oh snap! You got an error!</h4>
+    <p>Alert can also be used in a <strong>block form</strong>.</p>
+    <p>
+        <button class="btn btn-danger" {{action "submit"}}>Take this action</button> <a class="btn btn-default">Or do this</a>
+    </p>
+    {{/bs-alert}}
+</div>
 
 ```html
 \{\{#bs-alert type="danger"\}\}
@@ -49,7 +62,13 @@
 \{\{/bs-alert\}\}
 ```
 
-{{bs-alert message="Close will trigger a function in controller" type="warning" dismiss=true closed="didAlertClosed" close="didAlertClose"}}
+<div class="bs-example">
+    {{bs-alert message="Close will trigger a function in controller" type="warning" dismiss=true closed="didAlertClosed" close="didAlertClose"}}
+</div>
+
+``` html
+    \{\{bs-alert message="Close will trigger a function in controller" type="warning" dismiss=true closed="didAlertClosed" close="didAlertClose"\}\}
+```
 
 ## Component Properties
 

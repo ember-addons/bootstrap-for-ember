@@ -59,3 +59,22 @@ Works well with built-in styles that are included for placing badges in active s
     </li>
 </ul>
 ```
+
+## Component Properties
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Property</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>content</td>
+                <td>string: The content of the badge.</td>
+            </tr>
+        </tbody>
+    </table>
+
