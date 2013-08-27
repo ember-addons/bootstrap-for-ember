@@ -53,4 +53,10 @@ When you create your app, use the `Register` mixin to register the components:
 App = Ember.Application.createWithMixins(Bootstrap.Register);
 ```
 
+
+### Step by Step
+
+For step by step instructions, see [Hello World - Step by Step](https://github.com/ember-addons/bootstrap-for-ember/wiki/Hello-world)
+
+
 Thats all, happy coding!
