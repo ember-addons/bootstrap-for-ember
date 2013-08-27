@@ -1,12 +1,25 @@
 {
-  "name": "ember-bootstrap",
-  "version": "0.0.0",
-  "dependencies": {
+  "name": "ember-addons.bootstrap_for_ember",
+  "version": "0.1.0",
+  "description": "Bootstrap for Ember.js",
+  "homepage": "http://ember-addons.github.io/bootstrap-for-ember",
+  "authors": [
+    "Asaf Shakarchi <asaf000@gmail.com>"
+  ],
+  "keywords": ["bootstrap", "emberjs", "ember", "coffee", "javascript", "ui", "html5", "css3", "html", "css", "js"],
+  "devDependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
     "ember": "~1.0.0-rc.7",
     "handlebars": "~1.0.0",
     "bootstrap": "~3.0.0"
   },
-  "devDependencies": {}
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
