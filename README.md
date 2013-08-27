@@ -24,3 +24,33 @@ the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
 
 This project is under AGGRESSIVE development and changes constantly, if you find it interesting, we suggest you to 
 watch it or visit often to see the new stuff, and if you like it, _star_ it :-)
+
+## Usage
+
+### Installation
+
+Simply copy the 'dist' folder to your project or use [Bower](http://bower.io/):
+
+```
+bower install ember-addons.bs_for_ember --save
+```
+
+### Configuration
+
+#### Include files in your project
+
+* You must include the `bs-core.min.js` file before any other JS components files, this is the minimal core file of the library.
+* Then include one or more JS components in your project, see the `/dist/js` folder for the component list.
+
+**Note:** You still need to include the bootstrap css file, but you don't need to include any bootstrap JS files.
+
+
+#### Register components by Mixin
+
+When you create your app, use the `Register` mixin to register the components:
+
+``` javascript
+App = Ember.Application.createWithMixins(Bootstrap.Register);
+```
+
+Thats all, happy coding!
