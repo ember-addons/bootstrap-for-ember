@@ -19,3 +19,8 @@ the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
 > A picture is worth a thousand words
 
 ### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember/dist)
+
+## Important!
+
+This project is under AGGRESSIVE development and changes constantly, if you find it interesting, we suggest you to 
+watch it or visit often to see the new stuff, and if you like it, _star_ it :-)
