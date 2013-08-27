@@ -4,4 +4,5 @@ Showcase.Router.map(() ->
         @route 'label'
         @route 'badge'
         @route 'well'
+        @route 'button'
 )
