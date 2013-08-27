@@ -1,6 +1,6 @@
 {
   "name": "ember-addons.bootstrap_for_ember",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bootstrap for Ember.js",
   "homepage": "http://ember-addons.github.io/bootstrap-for-ember",
   "authors": [
@@ -24,6 +24,6 @@
     "!dist/",
     "!dist/*",
     "!dist/*/*",
-    "!dist/*/*/*",
+    "!dist/*/*/*"
   ]
 }
