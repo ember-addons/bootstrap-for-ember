@@ -1,13 +1,8 @@
 Bootstrap = window.Bootstrap
-Showcase = window.Showcase = Ember.Application.create(
+Showcase = window.Showcase = Ember.Application.createWithMixins(Bootstrap.Register,
     LOG_TRANSITIONS: true
     LOG_VIEW_LOOKUPS: true
     LOG_ACTIVE_GENERATION: true
-    BsAlertComponent: Bootstrap.BsAlertComponent
-    BsLabelComponent: Bootstrap.BsLabelComponent
-    BsBadgeComponent: Bootstrap.BsBadgeComponent
-    BsWellComponent: Bootstrap.BsWellComponent
-    BsButtonComponent: Bootstrap.BsButtonComponent
 )
 
 Ember.Handlebars.registerHelper 'raw', (value) ->
