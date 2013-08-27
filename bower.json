@@ -17,9 +17,13 @@
   "license": "Apache2",
   "ignore": [
     "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "*",
+    "!dist",
+    "!LICENSE",
+    "!README.md",
+    "!dist/",
+    "!dist/*",
+    "!dist/*/*",
+    "!dist/*/*/*",
   ]
 }
