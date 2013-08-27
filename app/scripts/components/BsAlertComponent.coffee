@@ -7,7 +7,7 @@ Bootstrap.BsAlertComponent = Ember.Component.extend(Bootstrap.TypeSupport,
 
     didInsertElement: () ->
         if @dismissAfter > 0
-            Ember.run.later(this, 'destroy', @dismissAfter*1000);
+            Ember.run.later(this, 'dismiss', @dismissAfter*1000);
 
         #This event is fired when the alert has been closed (will wait for CSS transitions to complete).
         Ember.$("##{@elementId}").bind('closed.bs.alert', () =>
@@ -19,4 +19,8 @@ Bootstrap.BsAlertComponent = Ember.Component.extend(Bootstrap.TypeSupport,
         Ember.$("##{@elementId}").bind('close.bs.alert', () =>
             @sendAction('close')
         )
+
+    dismiss: () ->
+        Ember.$("##{@elementId}").alert('close')
+
 )

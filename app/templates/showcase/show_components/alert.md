@@ -27,7 +27,7 @@
 ```
 
 <div class="bs-example">
-    {{bs-alert message="Dismissed after 5 seconds!!" type="info" dismissAfter=5}}
+    {{bs-alert message="Dismissed after 5 seconds!!" type="info" fade=true dismissAfter=5}}
 </div>
 
 ```html
