@@ -6,5 +6,6 @@ Showcase.ApplicationRoute = Ember.Route.extend(
             Ember.Object.create({title: "Badge", route: "show_components.badge"})
             Ember.Object.create({title: "Well", route: "show_components.well"})
             Ember.Object.create({title: "Button", route: "show_components.button"})
+            Ember.Object.create({title: "Progressbar", route: "show_components.progressbar"})
         ]
 )

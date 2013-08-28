@@ -329,7 +329,11 @@ module.exports = function (grunt) {
                     '.tmp/scripts/bs-label.js': '<%= yeoman.app %>/templates/components/bs-label.hbs',
                     '.tmp/scripts/bs-badge.js': '<%= yeoman.app %>/templates/components/bs-badge.hbs',
                     '.tmp/scripts/bs-well.js': '<%= yeoman.app %>/templates/components/bs-well.hbs',
-                    '.tmp/scripts/bs-button.js': '<%= yeoman.app %>/templates/components/bs-button.hbs'
+                    '.tmp/scripts/bs-button.js': '<%= yeoman.app %>/templates/components/bs-button.hbs',
+                    '.tmp/scripts/bs-progressbar.js': [
+                        '<%= yeoman.app %>/templates/components/bs-progress.hbs',
+                        '<%= yeoman.app %>/templates/components/bs-progressbar.hbs'
+                    ]
                 }
             },
             compile_showcase: {
