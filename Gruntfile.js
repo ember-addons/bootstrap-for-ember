@@ -325,10 +325,13 @@ module.exports = function (grunt) {
                     namespace: "Ember.TEMPLATES"
                 },
                 files: {
+                    '.tmp/scripts/bs-basic.js': [
+                        '<%= yeoman.app %>/templates/components/bs-page-header.hbs',
+                        '<%= yeoman.app %>/templates/components/bs-well.hbs'
+                    ],
                     '.tmp/scripts/bs-alert.js': '<%= yeoman.app %>/templates/components/bs-alert.hbs',
                     '.tmp/scripts/bs-label.js': '<%= yeoman.app %>/templates/components/bs-label.hbs',
                     '.tmp/scripts/bs-badge.js': '<%= yeoman.app %>/templates/components/bs-badge.hbs',
-                    '.tmp/scripts/bs-well.js': '<%= yeoman.app %>/templates/components/bs-well.hbs',
                     '.tmp/scripts/bs-button.js': '<%= yeoman.app %>/templates/components/bs-button.hbs',
                     '.tmp/scripts/bs-progressbar.js': [
                         '<%= yeoman.app %>/templates/components/bs-progress.hbs',

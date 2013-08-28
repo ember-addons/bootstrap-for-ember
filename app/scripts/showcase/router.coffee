@@ -4,6 +4,7 @@ Showcase.Router.map(() ->
         @route 'label'
         @route 'badge'
         @route 'well'
+        @route 'page-header'
         @route 'button'
         @route 'progressbar'
 )
