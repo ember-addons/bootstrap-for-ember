@@ -14,7 +14,6 @@ Bootstrap.BsProgressbarComponent = Ember.Component.extend(Bootstrap.TypeSupport,
     ).property('progress').cacheable()
 
     ariaValueNow: ( ->
-        console.log '!!!!!!!!!!!!!!!!', @progress
         @progress
     ).property('progress').cacheable()
 )
