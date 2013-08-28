@@ -9,6 +9,8 @@ Bootstrap.TypeSupport = Ember.Mixin.create(
 
     typeClass: ( ->
         type = @get 'type'
+        type = 'default' if not type?
+
         pref = @get 'classTypePrefix'
         "#{pref}-#{type}"
     ).property('type').cacheable()
