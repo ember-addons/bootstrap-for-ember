@@ -8,4 +8,5 @@ Showcase.Router.map(() ->
         @route 'button'
         @route 'progressbar'
         @route 'pills'
+        @route 'tabs'
 )
