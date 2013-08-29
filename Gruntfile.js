@@ -336,7 +336,8 @@ module.exports = function (grunt) {
                     '.tmp/scripts/bs-progressbar.js': [
                         '<%= yeoman.app %>/templates/components/bs-progress.hbs',
                         '<%= yeoman.app %>/templates/components/bs-progressbar.hbs'
-                    ]
+                        ],
+                    '.tmp/scripts/bs-pills.js': '<%= yeoman.app %>/templates/components/bs-pills.hbs',
                 }
             },
             compile_showcase: {

@@ -7,4 +7,5 @@ Showcase.Router.map(() ->
         @route 'page-header'
         @route 'button'
         @route 'progressbar'
+        @route 'pills'
 )
