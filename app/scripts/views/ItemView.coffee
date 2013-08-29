@@ -7,23 +7,9 @@ An extra 'active' css class will be assigned to the Item (this) if this is a sel
 Views that extends this view can be enhanced with:
 ItemSelection: Makes the item selectable.
 ###
-Bootstrap.ItemView = Ember.View.extend (
+Bootstrap.ItemView = Ember.View.extend(
     isItem: true
     classNameBindings: ['disabled']
-
-    ###
-    The value of the item, currently Items content supports only an array of strings, so value is the actual 'content' property
-    of the item.
-    ###
-    value: (->
-        #TODO: Ensure parentView is inherited from ItemsView
-        itemsView = @get('parentView')
-        if not itemsView?
-            return
-
-        value = @get('content')
-        value
-    ).property('content').cacheable()
 
     ###
     A calculated property that defines the title of the item.

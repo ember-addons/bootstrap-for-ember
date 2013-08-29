@@ -14,7 +14,9 @@
         <!-- build:css({.tmp,app}) showcase/styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <!--
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+        -->
         <link rel="stylesheet" href="bower_components/bootstrap/assets/css/docs.css">
         <link rel="stylesheet" href="bower_components/highlightjs/styles/default.css">
         <!-- endbuild -->
@@ -42,12 +44,13 @@
         <script src="scripts/mixins/size.js"></script>
 
         <!-- items -->
-        <script src="scripts/views/ItemView.js"></script>
-        <script src="scripts/views/ItemsView.js"></script>
+        <script src="scripts/mixins/ItemValue.js"></script>
         <script src="scripts/mixins/ItemSelection.js"></script>
         <script src="scripts/mixins/ItemsSelection.js"></script>
         <script src="scripts/mixins/Nav.js"></script>
         <script src="scripts/mixins/NavItem.js"></script>
+        <script src="scripts/views/ItemView.js"></script>
+        <script src="scripts/views/ItemsView.js"></script>
         <!-- endbuild -->
 
         <!--COMPONENTS -->
@@ -77,7 +80,10 @@
         <!-- build:js({.tmp,app}) js/bs-button.min.js-->
         <script src="bower_components/bootstrap/js/button.js"></script>
         <script src="scripts/components/BsButtonComponent.js"></script>
+        <script src="scripts/components/BsBtnGroup.js"></script>
+        <script src="scripts/components/BsBtnToolbarComponent.js"></script>
         <script src="scripts/bs-button.js"></script>
+        <script src="scripts/bs-btn-toolbar.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) js/bs-progressbar.min.js-->
