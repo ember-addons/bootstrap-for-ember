@@ -9,6 +9,10 @@
     {{bs-progress progress=60}}
 </div>
 
+``` html
+    \{\{bs-progress progress=60\}\}
+```
+
 **Simple as that! a single short line, compared to [Bootstarp Tags](http://getbootstrap.com/components/#progress) 5 long lines that
 produces the same result.**
 
@@ -26,6 +30,15 @@ The progress component respects all _aria_ tags mentioned in _Bootstrap_ documen
     {{bs-progress progress=80 type="danger"}}
 </div>
 
+
+``` html
+    \{\{bs-progress progress=40 type="success"\}\}
+    \{\{bs-progress progress=20 type="info"\}\}
+    \{\{bs-progress progress=60 type="warning"\}\}
+    \{\{bs-progress progress=80 type="danger"\}\}
+```
+
+
 ---
 
 The _progress_ property can be bound to a controller property:
@@ -34,6 +47,11 @@ The _progress_ property can be bound to a controller property:
     {{bs-progress progressBinding="prog"}}
     {{bs-button clicked="increment" content="Increment!"}}
 </div>
+
+``` html
+    \{\{bs-progress progressBinding="prog"\}\}
+    \{\{bs-button clicked="increment" content="Increment!"\}\}
+```
 
 Controller sample code:
 
@@ -74,6 +92,10 @@ In addition to _stripped=true_, add _animated=true_ property to animate the stri
     {{bs-progress progress=45 stripped=true animated=true}}
 </div>
 
+``` html
+    \{\{bs-progress progress=45 stripped=true animated=true\}\}
+```
+
 ## Stacked
 
 Multiple bars can be placed into the same _bs-progress_ to stack them:
@@ -85,3 +107,11 @@ Multiple bars can be placed into the same _bs-progress_ to stack them:
         {{bs-progressbar type="danger" progress="10"}}
     {{/bs-progress}}
 </div>
+
+``` html
+    \{\{#bs-progress\}\}
+        \{\{bs-progressbar type="success" progress="35"\}\}
+        \{\{bs-progressbar type="warning" progress="20"\}\}
+        \{\{bs-progressbar type="danger" progress="10"\}\}
+    \{\{/bs-progress\}\}
+```
