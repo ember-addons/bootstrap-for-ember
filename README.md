@@ -4,6 +4,11 @@ _Bootstrap for Ember.js_ is a collection of UI components based on Twitter Boots
 
 Components are very clean and lightweight and most importantly very easy to use,
 
+## ShowCase
+
+> A picture is worth a thousand words
+
+### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember/dist)
 
 ## Why?
 
@@ -13,12 +18,6 @@ or other Ember components requires code wiring.
 
 This project is heavily based on [Ember Components](http://emberjs.com/guides/components/), which makes the usage of
 the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
-
-## ShowCase
-
-> A picture is worth a thousand words
-
-### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember/dist)
 
 ## Important!
 
@@ -49,7 +48,7 @@ bower install ember-addons.bs_for_ember --save
 
 When you create your app, use the `Register` mixin to register the components:
 
-``` javascript
+``` javascripts
 App = Ember.Application.createWithMixins(Bootstrap.Register);
 ```
 
