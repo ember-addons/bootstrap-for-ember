@@ -9,3 +9,7 @@
 <div class="bs-example">
     {{bs-page-header title="Example page header" sub="Subtext for header"}}
 </div>
+
+```html
+    \{\{bs-page-header title="Example page header" sub="Subtext for header"\}\}
+```
