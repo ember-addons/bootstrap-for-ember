@@ -1,0 +1,13 @@
+{{#if heading}}
+    <div class="panel-heading">{{heading}}
+        {{#if dismiss}}
+            <a class="close" data-dismiss="panel" href="#">&times;</a>
+        {{/if}}
+    </div>
+{{/if}}
+
+<div class="panel-body">{{yield}}</div>
+
+{{#if footer}}
+    <div class="panel-footer">{{footer}}</div>
+{{/if}}

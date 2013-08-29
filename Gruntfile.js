@@ -327,7 +327,8 @@ module.exports = function (grunt) {
                 files: {
                     '.tmp/scripts/bs-basic.js': [
                         '<%= yeoman.app %>/templates/components/bs-page-header.hbs',
-                        '<%= yeoman.app %>/templates/components/bs-well.hbs'
+                        '<%= yeoman.app %>/templates/components/bs-well.hbs',
+                        '<%= yeoman.app %>/templates/components/bs-panel.hbs',
                     ],
                     '.tmp/scripts/bs-alert.js': '<%= yeoman.app %>/templates/components/bs-alert.hbs',
                     '.tmp/scripts/bs-label.js': '<%= yeoman.app %>/templates/components/bs-label.hbs',
