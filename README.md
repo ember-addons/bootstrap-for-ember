@@ -2,7 +2,12 @@
 
 _Bootstrap for Ember.js_ is a collection of UI components based on Twitter Bootstrap *v3* for Ember.js
 
-Components are very clean and lightweight and most importantly very easy to use,
+_Bootstra for Ember_ goes much further than using plain Bootstrap by providing _extra functionality_ by leveraging the 
+power of Ember.
+
+With the power of _Ember.js_ and the beauty of _Bootstrap_, expect interactive, clean, lightweight, powerful 
+and most importantly very easy to use components. In fact, using the components is usually much easier and shorter than 
+using Bootstrap as is, see showcase!
 
 ## ShowCase
 
@@ -21,8 +26,8 @@ the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
 
 ## Important!
 
-This project is under AGGRESSIVE development and changes constantly, if you find it interesting, we suggest you to 
-watch it or visit often to see the new stuff, and if you like it, _star_ it :-)
+**This project is under AGGRESSIVE development and changes constantly, if you find it interesting, we suggest you to 
+watch it or visit often to see the new stuff, and if you like it, _star_ it :-)**
 
 ## Usage
 
