@@ -1,5 +1,10 @@
 {{#each item in controller}}
     <li>
-        <a {{action "select" item}} style="cursor: pointer"></button> {{item.title}}</a>
+        <a {{action "select" item}} style="cursor: pointer">
+            {{item.title}}
+            {{#if item.special}}
+                {{bs-label content="Special" type="danger"}}
+            {{/if}}
+        </a>
     </li>
 {{/each}}
