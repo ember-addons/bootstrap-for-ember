@@ -1,4 +1,4 @@
-# bootstrap-for-ember
+# Bootstrap for Ember
 
 _Bootstrap for Ember.js_ is a collection of UI components based on Twitter Bootstrap *v3* for Ember.js
 
