@@ -1,4 +1,4 @@
-Bootstrap.BsPills = Bootstrap.ItemsView.extend(Bootstrap.Nav,
+Bootstrap.BsTabs = Bootstrap.ItemsView.extend(Bootstrap.Nav,
     navType: 'tabs'
     classNameBindings: ['justified:nav-justified']
     attributeBindings: ['style']
@@ -6,4 +6,4 @@ Bootstrap.BsPills = Bootstrap.ItemsView.extend(Bootstrap.Nav,
     itemViewClass: Bootstrap.BsPill
 )
 
-Ember.Handlebars.helper('bs-tabs', Bootstrap.BsPills)
+Ember.Handlebars.helper('bs-tabs', Bootstrap.BsTabs)
