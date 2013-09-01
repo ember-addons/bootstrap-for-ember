@@ -5,6 +5,9 @@ Showcase = window.Showcase = Ember.Application.createWithMixins(Bootstrap.Regist
     LOG_ACTIVE_GENERATION: true
 )
 
+Ember.ENV =
+    HELPER_PARAM_LOOKUPS: true
+
 Ember.Handlebars.registerHelper 'raw', (value) ->
     value.fn(value)
 

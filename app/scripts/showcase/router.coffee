@@ -11,5 +11,12 @@ Showcase.Router.map(() ->
         @route 'progressbar'
         @route 'pills'
         @route 'tabs'
+        @route 'tabs-panes'
+        @route 'tabs-with-routes'
         @route 'notifications'
+        @resource('user', ->
+            @route ('general')
+            @route ('privacy')
+            @route ('activities')
+        )
 )
