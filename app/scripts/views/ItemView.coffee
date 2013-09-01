@@ -2,7 +2,7 @@
 getParentView = (view) ->
     return unless view and (parentView = view.get 'parentView')
     # Ember objects respects the JS inheritence so instanceof can be used here
-    ok = parentView instanceof ItemsView
+    ok = parentView instanceof Bootstrap.ItemsView
     Ember.assert "The parent view must be an instance of Bootstrap.ItemsView or any inherited class", ok
     if ok then parentView else undefined
 
