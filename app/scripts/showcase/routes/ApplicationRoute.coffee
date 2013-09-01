@@ -13,7 +13,7 @@ Showcase.ApplicationRoute = Ember.Route.extend(
             Ember.Object.create({title: "Nav - Pills", route: "show_components.pills"})
             Ember.Object.create({title: "Nav - Tabs", route: "show_components.tabs"})
             Ember.Object.create({title: "Nav - Tabs Panes", route: "show_components.tabs-panes"})
-            Ember.Object.create({title: "Nav - Tabs with Routes", route: "show_components.tabs-with-routes"})
+            Ember.Object.create({title: "Nav - Tabs with Routes", special: true, route: "show_components.tabs-with-routes"})
             Ember.Object.create({title: "Notifications", special: true, route: "show_components.notifications"})
         ]
 )
