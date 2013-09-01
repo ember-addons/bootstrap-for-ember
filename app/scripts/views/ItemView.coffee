@@ -1,3 +1,18 @@
+# helper to get the parent view and test its type
+getParentView = (view) ->
+    return unless view and (parentView = view.get 'parentView')
+    # Ember objects respects the JS inheritence so instanceof can be used here
+    ok = parentView instanceof Bootstrap.ItemsView
+    Ember.assert "The parent view must be an instance of Bootstrap.ItemsView or any inherited class", ok
+    if ok then parentView else undefined
+
+
+# test if the given object is an Ember object or has a get method and use it to reutrn a proeprty
+getProperty = (obj, prop, noGetReturns) ->
+    return noGetReturns unless Ember.typeOf(obj) is 'instance' or Ember.canInvoke(obj, 'get')
+    obj.get prop
+
+
 ###
 Views that are rendered as an Item of the ItemsView should extends from this view.
 
@@ -15,37 +30,20 @@ Bootstrap.ItemView = Ember.View.extend(
     A calculated property that defines the title of the item.
     ###
     title: (->
-        #TODO: Ensure parentView is inherited from ItemsView
-        itemsView = @get('parentView')
-        if not itemsView?
-            return
-
+        return unless (itemsView = getParentView @)
         itemTitleKey = itemsView.get('itemTitleKey') || 'title'
-        content = @get('content')
-        #TODO: content is 'object' is not sufficient, it is required to also check that this is an Ember object or has a get method
-        if typeof(content) is 'object' then content.get(itemTitleKey) else content
+        content = @get 'content'
+        getProperty content, itemTitleKey, content
     ).property('content').cacheable()
 
     ###
     Determine whether the item is disabled or not
     ###
     disabled: (->
-        #TODO: Ensure parentView is inherited from ItemsView
-        itemsView = @get('parentView')
-        if not itemsView?
-            return
-
-        content = @get('content')
-        #TODO: content is 'object' is not sufficient, it is required to also check that this is an Ember object or has a get method
-        if typeof(content) is 'object'
-            if content.get('disabled')
-                #remove selection if item is selected
-                if @get('isActive')
-                    itemsView.set('selected', null)
-                return content.get('disabled')
-            else
-                false
-
-        false
+        return unless (itemsView = getParentView @)
+        content = @get 'content'
+        disabled = !!getProperty content, 'disabled', no
+        itemsView.set('selected', null) if disabled and @get 'isActive'
+        disabled
     ).property('content', 'content.disabled').cacheable()
 )
