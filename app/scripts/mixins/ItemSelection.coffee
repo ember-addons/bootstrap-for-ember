@@ -4,7 +4,7 @@ A Mixin to enhance items enhanced with the 'IsItem' Mixin with selection capabil
 When a click event is received the current item will be stored in the parent view 'selected' property,
 An extra 'active' css class will be assigned to the Item (this) if this is a selected item.
 ###
-Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue,
+Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue, Bootstrap.WithRouter,
     classNameBindings: ["isActive:active"]
 
     ###
@@ -16,7 +16,8 @@ Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue,
     ###
     isActive: (->
         #activate default tab if current route matches a tab route
-        return true if @get('content.linkTo') and @get('router')?.isActive(@get('content.linkTo'))
+        if @get('content.linkTo')
+            return true if @get('content.linkTo') and @get('router')?.isActive(@get('content.linkTo'))
 
         #TODO: Ensure parentView is inherited from ItemsView
         itemsView = @get('parentView')
