@@ -74,7 +74,7 @@ To define links (items) as disabed, you need to provide extra metadata per defin
 
 <div class="bs-example">
     {{bs-pills contentBinding="content1" selectedBinding="selected1"}}
-    {{bs-button clicked="disableHome" content="Disable Home"}}
+    {{bs-button clicked="disableHome" title="Disable Home"}}
 </div>
 
 ``` html

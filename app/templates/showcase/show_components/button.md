@@ -5,7 +5,7 @@
 
 <div class="bs-example">
     {{#bs-button}}Content{{/bs-button}}
-    {{bs-button content="Inline Text"}}
+    {{bs-button title="Inline Text"}}
     {{#bs-button type="primary"}}Primary{{/bs-button}}
     {{#bs-button type="link"}}Link{{/bs-button}}
 
@@ -18,7 +18,7 @@
 \{\{#bs-button\}\}Content\{\{/bs-button\}\}
 
 <!--Inline text as button content-->
-\{\{bs-button content="Inline Text"\}\}
+\{\{bs-button title="Inline Text"\}\}
 
 <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 \{\{#bs-button type="primary"\}\}Primary\{\{/bs-button\}\}
@@ -34,17 +34,17 @@ In correspondence with bootstrap css class button sizes `.btn-lg`, `.btn-sm`, or
 
 <div class="bs-example">
     <p>
-        {{bs-button type="primary" size="xs" content="Primary Extra Small Button"}}
-        {{bs-button type="info" small=true content="Info Small Button"}}
-        {{bs-button type="danger" content="Danger Default size button"}}
+        {{bs-button type="primary" size="xs" title="Primary Extra Small Button"}}
+        {{bs-button type="info" small=true title="Info Small Button"}}
+        {{bs-button type="danger" title="Danger Default size button"}}
         {{#bs-button size="lg"}}Default Large button{{/bs-button}}
     </p>
 </div>
 
 ``` html
-\{\{bs-button type="primary" size="xs" content="Primary Extra Small Button"\}\}
-\{\{bs-button type="info" small=true content="Info Small Button"\}\}
-\{\{bs-button type="danger" content="Danger Default size button"\}\}
+\{\{bs-button type="primary" size="xs" title="Primary Extra Small Button"\}\}
+\{\{bs-button type="info" small=true title="Info Small Button"\}\}
+\{\{bs-button type="danger" title="Danger Default size button"\}\}
 \{\{#bs-button size="lg"\}\}Default Large button\{\{/bs-button\}\}
 ```
 
@@ -75,11 +75,11 @@ As in Bootstrap, set `disabled="disabled"`/`disabled=true` to make the button un
 Disabled state can also be hooked to a controller property
 
 <div class="bs-example">
-    {{bs-button type="primary" content="Click to disable" disabled=isButtonDisabled clicked="disableButton"}}
+    {{bs-button type="primary" title="Click to disable" disabled=isButtonDisabled clicked="disableButton"}}
 </div>
 
 ``` html
-\{\{bs-button type="primary" content="Click to disable" disabled=isButtonDisabled clicked="disableButton"\}\}
+\{\{bs-button type="primary" title="Click to disable" disabled=isButtonDisabled clicked="disableButton"\}\}
 ```
 
 * `isButtonDisabled` is a boolean property on the controller
@@ -95,15 +95,15 @@ Then extra `loading=loadingState` is needed where *loadingState* is a property i
 defines the current state of the button:
 
 * If `loadingState` property equals `loading` then the button will be disabled and its text will change to the value of the `data-loading-text` button property.
-* If its value is `null` then the button will be re-enabled and its text will be modified to the original value defined in the `content` button property.
+* If its value is `null` then the button will be re-enabled and its text will be modified to the original value defined in the `title` button property.
 
 <div class="bs-example">
-    {{bs-button type="primary" data-loading-text="Loading..." loading=loadingState clicked="disableButton" content="Submit" clicked="startLoading"}}
+    {{bs-button type="primary" data-loading-text="Loading..." loading=loadingState clicked="disableButton" title="Submit" clicked="startLoading"}}
 </div>
 
 
 ``` html
-\{\{bs-button type="primary" data-loading-text="Loading..." loading=loadingState content="Submit" clicked="startLoading"\}\}
+\{\{bs-button type="primary" data-loading-text="Loading..." loading=loadingState title="Submit" clicked="startLoading"\}\}
 ```
 
 <p>In controller:</p>
@@ -122,7 +122,7 @@ The `loading` property may also return any string that matches one of the `data-
 but the original text of the button when the loading state completes.
 
 <div class="bs-example">
-    {{bs-button type="primary" data-loading-text="Loading..." data-completed-text="Completed!" loading=loadingState1 content="Submit!" clicked="startLoading1"}}
+    {{bs-button type="primary" data-loading-text="Loading..." data-completed-text="Completed!" loading=loadingState1 title="Submit!" clicked="startLoading1"}}
 </div>
 
 ``` javascript
@@ -155,7 +155,7 @@ Pay attention that this time the `loadingState` is set to `completed` and not `n
                 <td>Alert types: _success_ | _info_ | _warning_ | _danger_</td>
             </tr>
             <tr>
-                <td>content</td>
+                <td>title</td>
                 <td>A string representing the text of the button (_not required if component is used as a block component_)</td>
             </tr>
             <tr>

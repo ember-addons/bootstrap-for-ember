@@ -53,4 +53,28 @@ Make a set of buttons appear vertically stacked rather than horizontally by addi
     {{bs-btn-group contentBinding="options" selectedBinding="selected" vertical=true}}
 </div>
 
+## Buttons with Metadata
 
+It is possible to provide extra metadata per button in the group.
+
+<div class="bs-example">
+    {{#bs-btn-toolbar}}
+        {{bs-btn-group size="lg" contentBinding="optionsWithMeta" selectedBinding="selected"}}
+    {{/bs-btn-toolbar}}
+</div>
+
+``` html
+\{\{bs-btn-group size="lg" contentBinding="optionsWithMeta" selectedBinding="selected"\}\}
+```
+
+_Controller's code_:
+
+``` javascript
+
+Showcase.ShowComponentsButtonGroupController = Ember.Controller.extend({
+  optionsWithMeta: [
+    {title: 'Create', type: 'primary'},
+    {title: 'Destroy', type: 'danger'}
+  ]
+});
+```

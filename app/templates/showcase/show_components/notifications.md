@@ -18,10 +18,10 @@ How you style the component is up to you, this is just an example for centralizi
 Then use the _NotificationManager_ / _NM_ to push new notifications with a message and type.
 
 <div class="bs-example" >
-    {{bs-button type="info" clicked="pushInfo" content="Push Info"}}
-    {{bs-button type="warning" clicked="pushWarn" content="Push Warning"}}
-    {{bs-button type="success" clicked="pushSuccess" content="Push Success"}}
-    {{bs-button type="danger" clicked="pushDanger" content="Push Danger"}}
+    {{bs-button type="info" clicked="pushInfo" title="Push Info"}}
+    {{bs-button type="warning" clicked="pushWarn" title="Push Warning"}}
+    {{bs-button type="success" clicked="pushSuccess" title="Push Success"}}
+    {{bs-button type="danger" clicked="pushDanger" title="Push Danger"}}
 </div>
 
 Controller code:

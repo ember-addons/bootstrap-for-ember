@@ -45,7 +45,7 @@ The _progress_ property can be bound to a controller property:
 
 <div class="bs-example">
     {{bs-progress progressBinding="prog"}}
-    {{bs-button clicked="increment" content="Increment!"}}
+    {{bs-button clicked="increment" title="Increment!"}}
 </div>
 
 ``` html
