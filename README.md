@@ -29,6 +29,12 @@ the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
 **This project is under AGGRESSIVE development and changes constantly, if you find it interesting, we suggest you to 
 watch it or visit often to see the new stuff, and if you like it, _star_ it :-)**
 
+## Quotes
+
+<blockquote class="twitter-tweet"><p>Also, <a href="http://t.co/NtqRMNtsA4">http://t.co/NtqRMNtsA4</a> (Bootstrap for <a href="https://twitter.com/search?q=%23emberjs&amp;src=hash">#emberjs</a> using components) is kind of awesome!</p>&mdash; Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/statuses/373875479096205312">August 31, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 ## Usage
 
 ### Installation
