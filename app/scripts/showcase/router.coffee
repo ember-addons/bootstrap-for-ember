@@ -13,6 +13,7 @@ Showcase.Router.map(() ->
         @route 'pills'
         @route 'tabs'
         @route 'tabs-panes'
+        @route 'wizard'
         @route 'tabs-with-routes'
         @route 'notifications'
         @resource('user', ->

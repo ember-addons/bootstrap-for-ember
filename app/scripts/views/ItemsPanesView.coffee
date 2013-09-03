@@ -7,5 +7,6 @@ Bootstrap.ItemsPanesView = Ember.CollectionView.extend(
     ).property('viewsInserted')
 
     didInsertElement: () ->
+        @._super()
         @set('viewsInserted', true)
 )
