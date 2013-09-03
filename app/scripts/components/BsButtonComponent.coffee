@@ -13,7 +13,7 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
             for key,val of @get('content')
                 @set key, val
         else
-            @attributeBindings.pushObject attr for attr of @ when attr.match(/^data-\w*-text$/)?
+            @attributeBindings.pushObject attr for attr of @ when attr.match(/^data-\w*$/)?
 
     blockClass: ( ->
         if @block then "#{@classTypePrefix}-block" else null
