@@ -41,7 +41,7 @@ Bootstrap.BsWizardStepsPanes = Bootstrap.ItemsPanesView.extend(
     itemViewClass: Bootstrap.BsWizardStepPane
 )
 
-Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
+Bootstrap.BsWizardComponent = Ember.ContainerView.extend(Ember.TargetActionSupport,
     classNames: ['wizard']
     childViews: ['steps', 'panes', 'controls']
     prevAllowed: true
@@ -69,7 +69,7 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
         prev: Bootstrap.BsButtonComponent.extend(
             title: 'Prev'
             size: 'xs'
-            elementId: 'prev'
+            "data-rel": 'PREV'
             isVisible: (->
                 @get('parentView').get('parentView').get('hasPrev')
             ).property('parentView.parentView.items.selected')
@@ -77,7 +77,7 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
         next: Bootstrap.BsButtonComponent.extend(
             title: 'Next'
             size: 'xs'
-            elementId: 'next'
+            "data-rel": 'NEXT'
             isVisible: (->
                 @get('parentView').get('parentView').get('hasNext')
             ).property('parentView.parentView.items.selected')
@@ -85,7 +85,7 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
         finish: Bootstrap.BsButtonComponent.extend(
             title: 'Finish'
             size: 'xs'
-            elementId: 'finish'
+            "data-rel": 'FINISH'
             isVisible: (->
                 @get('parentView').get('parentView').get('isLast')
             ).property('parentView.parentView.items.selected')
@@ -103,17 +103,19 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
         @get('items').set('default', @.get('items')._childViews[0].get('content').get('title'))
 
     click: (event) ->
-        b = event.target.getAttribute("id")
-        @prev() if b is 'prev'
-        @next() if b is 'next'
-        @close() if b is 'finish'
-
+        b = event.target.getAttribute("data-rel")
+        @prev() if b is 'PREV'
+        @next() if b is 'NEXT'
+        @close() if b is 'FINISH'
     next: () ->
         if @get('hasNext')
             @stepCompleted(@get('currentStepIdx'))
             currIdx = @get('currentStepIdx')+1
             #@set 'currentItemIdx', currIdx
             @move(currIdx)
+            @triggerAction
+                action: 'onNext'
+                actionContext: @get('targetObject')
 
     prev: () ->
        if @get('hasPrev')
@@ -121,6 +123,10 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
             @stepCompleted(currIdx, false)
             #@set 'currentItemIdx', currIdx
             @move(currIdx)
+            @triggerAction
+                action: 'onPrev'
+                actionContext: @get('targetObject')
+
 
     move: (idx) ->
         @._childViews[0]?.set 'selected', @._childViews[0]._childViews[idx]?.get('content')
@@ -131,6 +137,7 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
 
     hasPrev: (->
         @get('currentStepIdx') > 0
+        @get('currentStepIdx') > 0 and @get('prevAllowed')
     ).property('currentStepIdx')
 
     isLast: (->
@@ -138,11 +145,22 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(
     ).property('currentStepIdx')
 
     close: ( ->
+        @triggerAction
+            action: 'onFinish'
+            actionContext: @get('targetObject')
         @destroy()
     )
 
     stepCompleted: (idx, compl=true) ->
         @._childViews[0]._childViews[idx].set('completed', compl)
+)
+
+Bootstrap.BsWizardComponent = Bootstrap.BsWizardComponent.reopenClass(
+    build: (options) ->
+        options = {}  unless options
+        options.manual = true
+        wizard = @create(options)
+        wizard.append()
 )
 
 Ember.Handlebars.helper('bs-wizard', Bootstrap.BsWizardComponent)
