@@ -67,4 +67,4 @@ You can control the visibility duration of each message by specifying the _showT
             </tr>
         </tbody>
     </table>
-
+</div>

@@ -8,15 +8,19 @@ Bootstrap.BsPanelComponent = Ember.Component.extend(Bootstrap.TypeSupport,
     collapsible: false
     open: true
 
-    close: (event) ->
-        @sendAction('onClose')
-        @$().removeClass('in')
-        #TODO: Causes ' Object #<HTMLDivElement> has no method 'destroyElement' '
-        #@$().one($.support.transition.end, @destroy).emulateTransitionEnd(150)
-        #Workaround
-        setTimeout (->
-            @destroy()
-        ).bind(@), 250
+    actions:
+        close: (event) ->
+            @sendAction('onClose')
+            @$().removeClass('in')
+            #TODO: Causes ' Object #<HTMLDivElement> has no method 'destroyElement' '
+            #@$().one($.support.transition.end, @destroy).emulateTransitionEnd(150)
+            #Workaround
+            setTimeout (->
+                @destroy()
+            ).bind(@), 250
+
+    click: (event) ->
+        @sendAction('clicked')
 
     collapsibleBodyId: (->
         "#{@get('elementId')}_body"
