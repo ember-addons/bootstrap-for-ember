@@ -91,3 +91,33 @@ Panels can also be clickable, the click is propagated to the _current controller
     <p>Panel content.</p>
 \{\{/bs-panel\}\}
 ```
+
+## Collapsible Panels
+
+Panels can be collapsible, to enable collapsible support set `collapsible=true` on the component tag:
+
+<div class="bs-example">
+{{#bs-panel heading="Simple Panel" collapsible=true dismiss=true footer="Panel Footer"}}
+    <p>Panel content goes here...!</p>
+{{/bs-panel}}
+</div>
+
+``` html
+\{\{#bs-panel heading="Simple Panel" collapsible=true dismiss=true footer="Panel Footer"\}\}
+    <p>Panel content goes here...!</p>
+\{\{/bs-panel\}\}
+```
+
+Collapsible panels can also be closed by default by setting `open=false`.
+
+<div class="bs-example">
+{{#bs-panel heading="Open me!" collapsible=true dismiss=true open=false}}
+    <p>IM OPEN NOW!</p>
+{{/bs-panel}}
+</div>
+
+``` html
+\{\{#bs-panel heading="Simple Panel" collapsible=true dismiss=true footer="Panel Footer"\}\}
+    <p>Panel content goes here...!</p>
+\{\{/bs-panel\}\}
+```
