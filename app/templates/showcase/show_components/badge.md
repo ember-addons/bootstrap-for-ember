@@ -77,4 +77,4 @@ Works well with built-in styles that are included for placing badges in active s
             </tr>
         </tbody>
     </table>
-
+</div>

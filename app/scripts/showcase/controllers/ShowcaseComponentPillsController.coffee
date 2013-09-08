@@ -14,6 +14,7 @@ Showcase.ShowComponentsPillsController = Ember.Controller.extend(
         console.log("Selection has changed to: #{@get('selected')}")
     ).observes('selected')
 
-    disableHome: () ->
-        @get('content1').objectAt(0).set('disabled', true)
+    actions:
+        disableHome: () ->
+            @get('content1').objectAt(0).set('disabled', true)
 )

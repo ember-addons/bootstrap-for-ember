@@ -3,18 +3,19 @@ Showcase.ShowComponentsButtonController = Ember.Controller.extend(
     loadingState: null
     loadingState1: null
 
-    disableButton: ->
-        @set 'isButtonDisabled', true
+    actions:
+        disableButton: ->
+            @set 'isButtonDisabled', true
 
-    startLoading: ->
-        @set 'loadingState', 'loading'
-        Ember.run.later(() =>
-            @set 'loadingState', null
-        , 2000)
+        startLoading: ->
+            @set 'loadingState', 'loading'
+            Ember.run.later(() =>
+                @set 'loadingState', null
+            , 2000)
 
-    startLoading1: ->
-        @set 'loadingState1', 'loading'
-        Ember.run.later(() =>
-            @set 'loadingState1', 'completed'
-        , 2000)
+        startLoading1: ->
+            @set 'loadingState1', 'loading'
+            Ember.run.later(() =>
+                @set 'loadingState1', 'completed'
+            , 2000)
 )

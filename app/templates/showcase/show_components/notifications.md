@@ -73,4 +73,4 @@ You can control the duration messages are displayed, the fade out and fade in ti
             </tr>
         </tbody>
     </table>
-
+</div>
