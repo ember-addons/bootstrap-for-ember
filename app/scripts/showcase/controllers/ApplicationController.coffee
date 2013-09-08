@@ -1,4 +1,5 @@
 Showcase.ApplicationController = Ember.ArrayController.extend(
-    select: (item) ->
-        @transitionToRoute item.route
+	actions:
+	    select: (item) ->
+	        @transitionToRoute item.route
 )
