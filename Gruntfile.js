@@ -295,6 +295,14 @@ module.exports = function (grunt) {
                         'generated/*'
                     ]
                 }]
+            },
+            //Copy unminified files before the uglify runs
+            unminified: {
+                files: [{
+                    expand: true,
+                    src: ['<%= yeoman.dist %>/js/bs-*.min.js'],
+                    ext: '.max.js'
+                }]
             }
         },
         concurrent: {
@@ -432,6 +440,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'neuter',
         'concat',
+        'copy:unminified',
         'cssmin',
         'uglify',
         'copy:dist',
