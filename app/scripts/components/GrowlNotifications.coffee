@@ -6,7 +6,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
     ###
     @property {String[]} The array of concrete class names to put on this view's element
     ###
-    classNames: ['notifications']
+    classNames: ['growl-notifications']
     ###
     Binding to the GrowlNotificationManager's notifications array
     Each of the array element will be rendered as a notification view (see ItemViewClass)
@@ -20,7 +20,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
     Determines what view class to render for each item in the content array.
     ###
     itemViewClass: Ember.View.extend(
-        classNames: ['notification']
+        classNames: ['growl-notification']
         template: Ember.Handlebars.compile '''
             <span class="glyphicon {{unbound view.iconType}} icon"></span>
             <a class="close-notification" {{action "close" target="view"}}>
@@ -34,7 +34,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
             </p>
         '''
         classNameBindings: [
-            ":notification"
+            ":growl-notification"
             "content.closed"
             "isOpaque"
         ]
