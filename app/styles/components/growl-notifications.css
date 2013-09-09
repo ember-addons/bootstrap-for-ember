@@ -1,11 +1,11 @@
-.notifications {
+.growl-notifications {
   position: fixed;
   right: 10px;
   top: 10px;
   z-index: 9999; /*must be highest element on page*/
 }
 
-.notification {
+.growl-notification {
   opacity: 0;
   position: absolute;
   right: 10px;
@@ -23,26 +23,26 @@
   transition: opacity 0.3s ease-out, top 0.3s ease-out, right 0.3s ease-out;
 }
 
-.notification.is-opaque {
+.growl-notification.is-opaque {
   opacity: 1;
 }
 
-.notification:hover {
+.growl-notification:hover {
   border-color: rgb(255, 255, 255);
 }
 
-.notification.closed {
+.growl-notification.closed {
   display: none;
 }
 
-.notification .icon {
+.growl-notification .icon {
   position: absolute;
   top: 9px;
   left: 9px;
   font-size: 26px;
 }
 
-.notification .close-notification {
+.growl-notification .close-notification {
   display: none;
   position: absolute;
   top: -6px;
@@ -53,6 +53,6 @@
   color: rgb(255, 255, 255);
 }
 
-.notification:hover .close-notification {
+.growl-notification:hover .close-notification {
   display: block;
 }
