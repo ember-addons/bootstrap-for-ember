@@ -21,18 +21,18 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
     ###
     itemViewClass: Ember.View.extend(
         classNames: ['notification']
-        template: Ember.Handlebars.compile [
-            '<span class="glyphicon {{unbound view.iconType}} icon"></span>'
-            '<a class="close-notification" {{action "close" target="view"}}>'
-                '<span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>'
-            '</a>'
-            '<strong>'
-                '{{view.content.title}}'
-            '</strong>'
-            '<p>'
-                '{{view.content.sub}}'
-            '</p>'
-        ].join("\n")
+        template: Ember.Handlebars.compile '''
+            <span class="glyphicon {{unbound view.iconType}} icon"></span>
+            <a class="close-notification" {{action "close" target="view"}}>
+                <span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>
+            </a>
+            <strong>
+                {{view.content.title}}
+            </strong>
+            <p>
+                {{view.content.sub}}
+            </p>
+        '''
         classNameBindings: [
             ":notification"
             "content.closed"

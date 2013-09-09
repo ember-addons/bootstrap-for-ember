@@ -6,7 +6,19 @@
   "authors": [
     "Asaf Shakarchi <asaf000@gmail.com>"
   ],
-  "keywords": ["bootstrap", "emberjs", "ember", "coffee", "javascript", "ui", "html5", "css3", "html", "css", "js"],
+  "keywords": [
+    "bootstrap",
+    "emberjs",
+    "ember",
+    "coffee",
+    "javascript",
+    "ui",
+    "html5",
+    "css3",
+    "html",
+    "css",
+    "js"
+  ],
   "devDependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
@@ -25,5 +37,8 @@
     "!dist/*",
     "!dist/*/*",
     "!dist/*/*/*"
-  ]
+  ],
+  "dependencies": {
+    "highlightjs": "~7.3.0"
+  }
 }
