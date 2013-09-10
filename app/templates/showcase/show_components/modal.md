@@ -26,8 +26,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   myModalButtons: [
-    {title: 'Submit', clicked: "submit"},
-    {title: 'Cancel', clicked: "cancel", dismiss: 'modal'}
+    Ember.Object.create({title: 'Submit', clicked: "submit"}),
+    Ember.Object.create({title: 'Cancel', clicked: "cancel", dismiss: 'modal'})
   ],
 
   //Submit the modal
@@ -68,8 +68,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   manualButtons: [
-    {title: 'Submit', clicked: "submitManual"},
-    {title: 'Cancel', dismiss: 'modal'}
+    Ember.Object.create({title: 'Submit', clicked: "submitManual"},)
+    Ember.Object.create({title: 'Cancel', dismiss: 'modal'})
   ],
 
   submitManual: function() {
@@ -77,15 +77,12 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend({
     return Bootstrap.ModalManager.close('manualModal');
   },
   createModalProgramatically: function() {
-    return Bootstrap.BsModalComponent.build({
-      name: 'manualModal',
-      title: 'Invite Member',
-      #The modal's body content will be set to the templateName's content
-      templateName: 'demo-template',
-      #NOTE: this is important if you want the context of the modal to be the current component, it's possible to set other controllers too.
-      targetObject: this,
-      footerButtons: this.manualButtons
-    });
+    //@property {string} The name of the modal, required later to close the modal (see submitManual function above)
+    //@property {string} The title of the modal.
+    //@property {string} The template name to render within the modal body, a View class may also be specified.
+    //@property {array} Array of Button meta data
+    //@property {object} The controller instance that instantiate the modal.
+    Bootstrap.ModalManager.open('manualModal', 'Hello', 'demo-template', @manualButtons, this)
   }
 });
 ```

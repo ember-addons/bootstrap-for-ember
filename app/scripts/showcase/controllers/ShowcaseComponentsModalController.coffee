@@ -1,13 +1,13 @@
 Showcase.ShowComponentsModalController = Ember.Controller.extend(
     #Footer buttons meta data
     myModalButtons: [
-        {title: 'Submit', clicked:"submit"}
-        {title: 'Cancel', clicked:"cancel", dismiss: 'modal'}
+        Ember.Object.create({title: 'Submit', clicked:"submit"})
+        Ember.Object.create({title: 'Cancel', clicked:"cancel", dismiss: 'modal'})
     ]
 
     manualButtons: [
-        {title: 'Submit', clicked:"submitManual"}
-        {title: 'Cancel', dismiss: 'modal'}
+        Ember.Object.create({title: 'Submit', clicked:"submitManual"})
+        Ember.Object.create({title: 'Cancel', dismiss: 'modal'})
     ]
 
 
@@ -33,13 +33,9 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend(
             Bootstrap.ModalManager.close('manualModal')
 
         createModalProgramatically: ->
-            Bootstrap.BsModalComponent.build(
-                name: 'manualModal'
-                title: 'Invite Member'
-                #The modal's body content will be set to the templateName's content
-                templateName: 'demo-template'
-                #NOTE: this is important if you want the context of the modal to be the current component, it's possible to set other controllers too.
-                targetObject: @
-                footerButtons: @manualButtons
+            body = Ember.View.extend(
+                template: Ember.Handlebars.compile('This is a programatic ')
             )
+
+            Bootstrap.ModalManager.open('manualModal', 'Hello', 'demo-template', @manualButtons, @)
 )

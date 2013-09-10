@@ -82,14 +82,15 @@ Bootstrap.BsModalComponent = Ember.Component.extend(
         @_keyUpHandler = handler
 )
 
+###
 Bootstrap.BsModalComponent = Bootstrap.BsModalComponent.reopenClass(
     build: (options) ->
         options = {}  unless options
         options.manual = true
         modalPane = @create(options)
-        #modalPane.appendTo App.rootElement
         modalPane.append()
 )
+###
 
 Bootstrap.ModalManager = Ember.Object.create(
     add: (name, modalView) ->
@@ -106,4 +107,32 @@ Bootstrap.ModalManager = Ember.Object.create(
 
     show: (name) ->
         @get(name).show()
+
+    open: (name, title, view, footerButtons, controller) ->
+        Modal = controller.container.lookup('component:bs-modal')
+        Modal.set('name', name)
+
+        Modal.reopen(
+            name: name
+            title: title
+            manual: true
+            footerButtons: footerButtons
+            targetObject: controller
+        )
+
+        if Ember.typeOf(view) is 'string'
+            template = controller.container.lookup("template:#{view}")
+            Ember.assert("Template #{view} was specified for Modal but template could not be found.", template)
+            if template
+                Modal.reopen(
+                    body: Ember.View.extend(
+                        template: template
+                    )
+                )
+        else if Ember.typeOf(view) is 'class'
+            Modal.reopen(
+                body: view
+            )
+
+        Modal.appendTo('body')
 )

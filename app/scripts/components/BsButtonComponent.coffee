@@ -9,10 +9,12 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     init: ->
         @_super()
         #If content is an object, then assign its properties to the button component
-        if @get('content')? and Ember.typeOf(@get('content')) is 'object'
+        if @get('content')? and Ember.typeOf(@get('content')) is 'instance'
             for key,val of @get('content')
                 @set key, val
         else
+            if not @get('title')?
+                @set('title', @get('content'))
             @attributeBindings.pushObject attr for attr of @ when attr.match(/^data-\w*$/)?
 
     blockClass: ( ->

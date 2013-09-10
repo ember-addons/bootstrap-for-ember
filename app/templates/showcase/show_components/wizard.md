@@ -76,38 +76,32 @@ _Controller's code:_
 
 ``` javascript
 Showcase.ShowComponentsWizardController = Ember.Controller.extend({
-  createWizard: function() {
-    Bootstrap.BsModalComponent.build({
-      name: 'manualModal',
-      title: 'Invite Member',
-      //Create the wizard as the body of the modal
-      body: Bootstrap.BsWizardComponent.extend({
+  actions: {
+    createWizard: function() {
+      var body;
+      body = Bootstrap.BsWizardComponent.extend({
         content: [
-          Ember.Object.create({title: 'Step1',template: 'wizard/step1',disabled: true}),
-          Ember.Object.create({title: 'Step2',template: 'wizard/step2', disabled: true}),
+          Ember.Object.create({title: 'Step1', template: 'wizard/step1', disabled: true}),
+          Ember.Object.create({title: 'Step2', template: 'wizard/step2', disabled: true}),
           Ember.Object.create({title: 'Step3', template: 'wizard/step3', disabled: true})
         ],
-        //Important: set targetObject to 'this' so the wizard can communicate with our controller
         targetObject: this,
         onNext: "onNext",
         onPrev: "onPrev",
         onFinish: 'onFinish'
-      }),
-      //Important: set targetObject to 'this' so the modal can communicate with our controller
-      targetObject: this,
-      footerButtons: this.manualButtons
-    });
-  },
-  onNext: function() {
-    return console.log('NEXT');
-  },
-  onPrev: function() {
-    return console.log('PREV');
-  },
-  onFinish: function() {
-    //Close the modal when the wizard has finished its job.
-    Bootstrap.ModalManager.close('manualModal');
-    return Bootstrap.NM.push('Wizard completed!');
+      });
+      Bootstrap.ModalManager.open('manualModal', 'Wizard Title...', body, null, this);
+    },
+    onNext: function() {
+      return console.log('NEXT');
+    },
+    onPrev: function() {
+      return console.log('PREV');
+    },
+    onFinish: function() {
+      Bootstrap.ModalManager.close('manualModal');
+      return Bootstrap.NM.push('Wizard completed!');
+    }
   }
 });
 ```

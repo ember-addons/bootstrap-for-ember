@@ -8,25 +8,11 @@ Bootstrap.BsBtnGroup = Bootstrap.ItemsView.extend(Bootstrap.SizeSupport, Bootstr
     classTypePrefix: ['btn-group']
     classNames: ['btn-group']
     classNameBindings: ['vertical:btn-group-vertical']
-    #itemViewClass: Bootstrap.BsButtonComponent.extend(Bootstrap.ItemValue, Bootstrap.ItemSelection,
-    #)
     #TODO: This is a hack until it will be possible to extend from component as it looses the template association
-    itemViewClass: Ember.View.extend(Bootstrap.TypeSupport, Bootstrap.ItemValue, Bootstrap.ItemSelection,
-        template: Ember.Handlebars.compile('{{view.title}}')
-        tagName: 'button'
-        classNames: ['btn']
-        classNameBindings: ['blockClass']
-        classTypePrefix: 'btn'
-        typeBinding: 'content.type'
-
-        title: (->
-            content = @get('content')
-            return content unless Ember.typeOf(content) is 'instance' or Ember.canInvoke(content, 'get')
-            content.get 'title'
-        ).property('content')
-
+    #see https://github.com/emberjs/ember.js/issues/3376
+    itemViewClass: Bootstrap.BsButtonComponent.extend(Bootstrap.ItemValue, Bootstrap.ItemSelection,
+        layoutName: 'components/bs-button'
     )
-
 )
 
 Ember.Handlebars.helper('bs-btn-group', Bootstrap.BsBtnGroup)

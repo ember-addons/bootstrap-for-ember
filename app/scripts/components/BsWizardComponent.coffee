@@ -67,6 +67,9 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(Ember.TargetActionSuppo
         childViews: ['prev', 'next', 'finish']
 
         prev: Bootstrap.BsButtonComponent.extend(
+            #TODO: This is a hack until it will be possible to extend from component as it looses the template association
+            #see https://github.com/emberjs/ember.js/issues/3376
+            layoutName: 'components/bs-button'
             title: 'Prev'
             size: 'xs'
             "data-rel": 'PREV'
@@ -75,6 +78,9 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(Ember.TargetActionSuppo
             ).property('parentView.parentView.items.selected')
         )
         next: Bootstrap.BsButtonComponent.extend(
+            #TODO: This is a hack until it will be possible to extend from component as it looses the template association
+            #see https://github.com/emberjs/ember.js/issues/3376
+            layoutName: 'components/bs-button'
             title: 'Next'
             size: 'xs'
             "data-rel": 'NEXT'
@@ -83,6 +89,9 @@ Bootstrap.BsWizardComponent = Ember.ContainerView.extend(Ember.TargetActionSuppo
             ).property('parentView.parentView.items.selected')
         )
         finish: Bootstrap.BsButtonComponent.extend(
+            #TODO: This is a hack until it will be possible to extend from component as it looses the template association
+            #see https://github.com/emberjs/ember.js/issues/3376
+            layoutName: 'components/bs-button'
             title: 'Finish'
             size: 'xs'
             "data-rel": 'FINISH'

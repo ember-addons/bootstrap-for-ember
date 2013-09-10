@@ -15,12 +15,9 @@ Showcase.ShowComponentsWizardController = Ember.Controller.extend(
         ]))
 
 
-    createWizard: () ->
-        Bootstrap.BsModalComponent.build(
-            name: 'manualModal'
-            title: 'Invite Member'
-            #Create the wizard as the body of the modal
-            body: Bootstrap.BsWizardComponent.extend(
+    actions:
+        createWizard: () ->
+            body = Bootstrap.BsWizardComponent.extend(
                 content: [
                     Ember.Object.create({ title: 'Step1', template: 'wizard/step1', disabled: true})
                     Ember.Object.create({ title: 'Step2', template: 'wizard/step2', disabled: true})
@@ -32,19 +29,17 @@ Showcase.ShowComponentsWizardController = Ember.Controller.extend(
                 onPrev: "onPrev"
                 onFinish: 'onFinish'
             )
-            #Important: set targetObject to 'this' so the modal can communicate with our controller
-            targetObject: @
-            footerButtons: @manualButtons
-        )
 
-    onNext: ->
-        console.log 'NEXT'
+            Bootstrap.ModalManager.open('manualModal', 'Wizard Title...', body, null, @)
 
-    onPrev: ->
-        console.log 'PREV'
+        onNext: ->
+            console.log 'NEXT'
 
-    onFinish: =>
-        #Close the modal when the wizard has finished its job.
-        Bootstrap.ModalManager.close('manualModal')
-        Bootstrap.NM.push('Wizard completed!')
+        onPrev: ->
+            console.log 'PREV'
+
+        onFinish: =>
+            #Close the modal when the wizard has finished its job.
+            Bootstrap.ModalManager.close('manualModal')
+            Bootstrap.NM.push('Wizard completed!')
 )
