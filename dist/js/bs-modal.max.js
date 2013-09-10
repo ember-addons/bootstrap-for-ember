@@ -100,17 +100,16 @@ Modal component.
     }
   });
 
-  Bootstrap.BsModalComponent = Bootstrap.BsModalComponent.reopenClass({
-    build: function(options) {
-      var modalPane;
-      if (!options) {
-        options = {};
-      }
-      options.manual = true;
-      modalPane = this.create(options);
-      return modalPane.append();
-    }
-  });
+  /*
+  Bootstrap.BsModalComponent = Bootstrap.BsModalComponent.reopenClass(
+      build: (options) ->
+          options = {}  unless options
+          options.manual = true
+          modalPane = @create(options)
+          modalPane.append()
+  )
+  */
+
 
   Bootstrap.ModalManager = Ember.Object.create({
     add: function(name, modalView) {
@@ -127,6 +126,34 @@ Modal component.
     },
     show: function(name) {
       return this.get(name).show();
+    },
+    open: function(name, title, view, footerButtons, controller) {
+      var Modal, template;
+      Modal = controller.container.lookup('component:bs-modal');
+      Modal.set('name', name);
+      Modal.reopen({
+        name: name,
+        title: title,
+        manual: true,
+        footerButtons: footerButtons,
+        targetObject: controller
+      });
+      if (Ember.typeOf(view) === 'string') {
+        template = controller.container.lookup("template:" + view);
+        Ember.assert("Template " + view + " was specified for Modal but template could not be found.", template);
+        if (template) {
+          Modal.reopen({
+            body: Ember.View.extend({
+              template: template
+            })
+          });
+        }
+      } else if (Ember.typeOf(view) === 'class') {
+        Modal.reopen({
+          body: view
+        });
+      }
+      return Modal.appendTo('body');
     }
   });
 

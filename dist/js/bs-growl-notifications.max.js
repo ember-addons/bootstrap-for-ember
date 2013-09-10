@@ -26,7 +26,7 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
 
     itemViewClass: Ember.View.extend({
       classNames: ['growl-notification'],
-      template: Ember.Handlebars.compile(['<span class="glyphicon {{unbound view.iconType}} icon"></span>', '<a class="close-notification" {{action "close" target="view"}}>', '<span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>', '</a>', '<strong>', '{{view.content.title}}', '</strong>', '<p>', '{{view.content.sub}}', '</p>'].join("\n")),
+      template: Ember.Handlebars.compile('<span class="glyphicon {{unbound view.iconType}} icon"></span>\n<a class="close-notification" {{action "close" target="view"}}>\n    <span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>\n</a>\n<strong>\n    {{view.content.title}}\n</strong>\n<p>\n    {{view.content.sub}}\n</p>'),
       classNameBindings: [":growl-notification", "content.closed", "isOpaque"],
       attributeBindings: ['style'],
       /*

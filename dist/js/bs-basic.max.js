@@ -26,12 +26,17 @@
     fade: true,
     collapsible: false,
     open: true,
-    close: function(event) {
-      this.sendAction('onClose');
-      this.$().removeClass('in');
-      return setTimeout((function() {
-        return this.destroy();
-      }).bind(this), 250);
+    actions: {
+      close: function(event) {
+        this.sendAction('onClose');
+        this.$().removeClass('in');
+        return setTimeout((function() {
+          return this.destroy();
+        }).bind(this), 250);
+      }
+    },
+    click: function(event) {
+      return this.sendAction('clicked');
     },
     collapsibleBodyId: (function() {
       return "" + (this.get('elementId')) + "_body";
