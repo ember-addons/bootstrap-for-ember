@@ -119,7 +119,7 @@
     init: function() {
       var attr, key, val, _ref, _results, _results1;
       this._super();
-      if ((this.get('content') != null) && Ember.typeOf(this.get('content')) === 'object') {
+      if ((this.get('content') != null) && Ember.typeOf(this.get('content')) === 'instance') {
         _ref = this.get('content');
         _results = [];
         for (key in _ref) {
@@ -128,6 +128,9 @@
         }
         return _results;
       } else {
+        if (this.get('title') == null) {
+          this.set('title', this.get('content'));
+        }
         _results1 = [];
         for (attr in this) {
           if (attr.match(/^data-\w*$/) != null) {
@@ -170,7 +173,7 @@ In case this is a Radio, each item is rendered as a label.
     classNames: ['btn-group'],
     classNameBindings: ['vertical:btn-group-vertical'],
     itemViewClass: Bootstrap.BsButtonComponent.extend(Bootstrap.ItemValue, Bootstrap.ItemSelection, {
-      titleBinding: 'content'
+      layoutName: 'components/bs-button'
     })
   });
 

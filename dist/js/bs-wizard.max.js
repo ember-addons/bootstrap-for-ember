@@ -65,6 +65,7 @@
     controls: Ember.ContainerView.extend({
       childViews: ['prev', 'next', 'finish'],
       prev: Bootstrap.BsButtonComponent.extend({
+        layoutName: 'components/bs-button',
         title: 'Prev',
         size: 'xs',
         "data-rel": 'PREV',
@@ -73,6 +74,7 @@
         }).property('parentView.parentView.items.selected')
       }),
       next: Bootstrap.BsButtonComponent.extend({
+        layoutName: 'components/bs-button',
         title: 'Next',
         size: 'xs',
         "data-rel": 'NEXT',
@@ -81,6 +83,7 @@
         }).property('parentView.parentView.items.selected')
       }),
       finish: Bootstrap.BsButtonComponent.extend({
+        layoutName: 'components/bs-button',
         title: 'Finish',
         size: 'xs',
         "data-rel": 'FINISH',
