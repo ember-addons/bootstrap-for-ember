@@ -82,13 +82,6 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         willDestroyElement: ->
             $(window).unbind('resize', @get('_recomputeStyle'))
 
-        close: ->
-            @set('isOpaque', false)
-            setTimeout (->
-                @set "content.closed", true
-                clearTimeout @get("timeoutId")
-            ).bind(@), 300
-
         style: (->
             notifications = @get('parentView.content').rejectProperty('closed', true)
             index = notifications.indexOf(@get('content'))
@@ -119,6 +112,14 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
                 'danger': 'glyphicon-remove'
             hash[type] || ''
         ).property('content.type')
+
+        actions:
+            close: ->
+                @set('isOpaque', false)
+                setTimeout (->
+                    @set "content.closed", true
+                    clearTimeout @get("timeoutId")
+                ).bind(@), 300
     )
 )
 
