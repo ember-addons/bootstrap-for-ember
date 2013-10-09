@@ -15,7 +15,7 @@ Bootstrap.SizeSupport = Ember.Mixin.create(
 
     extraSmallSizeClass: ( ->
         pref = @get 'classTypePrefix'
-        if @sx then "#{pref}-xs" else null
+        if @xs then "#{pref}-xs" else null
     ).property('xs').cacheable()
 
     smallSizeClass: ( ->
