@@ -74,7 +74,7 @@ _Controller's code_:
 Showcase.ShowComponentsButtonGroupController = Ember.Controller.extend({
   optionsWithMeta: [
     Ember.Object.create({title: 'Create', type: 'primary'}),
-    Ember.Object.create(({title: 'Destroy', type: 'danger'});
+    Ember.Object.create(({title: 'Destroy', type: 'danger'})
   ]
 });
 ```
