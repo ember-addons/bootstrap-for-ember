@@ -26,8 +26,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   myModalButtons: [
-    Ember.Object.create({title: 'Submit', clicked: "submit"}),
-    Ember.Object.create({title: 'Cancel', clicked: "cancel", dismiss: 'modal'})
+    {title: 'Submit', clicked: "submit"},
+    {title: 'Cancel', clicked: "cancel", dismiss: 'modal'}
   ],
 
   //Submit the modal
@@ -47,6 +47,7 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend({
   }
 });
 ```
+NOTE: The buttons defined in the array object can contain the same attributes as the button component. For example: for a 'danger' button, add "type='danger'" to the object defining the button.
 
 
 ## Programatically Modal Creation
@@ -68,8 +69,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   manualButtons: [
-    Ember.Object.create({title: 'Submit', clicked: "submitManual"},)
-    Ember.Object.create({title: 'Cancel', dismiss: 'modal'})
+    {title: 'Submit', clicked: "submitManual"},
+    {title: 'Cancel', dismiss: 'modal'}
   ],
 
   submitManual: function() {
