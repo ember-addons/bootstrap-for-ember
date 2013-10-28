@@ -109,30 +109,29 @@ Bootstrap.ModalManager = Ember.Object.create(
         @get(name).show()
 
     open: (name, title, view, footerButtons, controller) ->
-        Modal = controller.container.lookup('component:bs-modal')
-        Modal.set('name', name)
-
-        Modal.reopen(
+        modalComponent = controller.container.lookup('component:bs-modal')
+        modalComponent.setProperties(
             name: name
             title: title
             manual: true
             footerButtons: footerButtons
-            targetObject: controller
         )
 
         if Ember.typeOf(view) is 'string'
             template = controller.container.lookup("template:#{view}")
             Ember.assert("Template #{view} was specified for Modal but template could not be found.", template)
             if template
-                Modal.reopen(
+                modalComponent.setProperties(
                     body: Ember.View.extend(
-                        template: template
+                        template: template,
+                        controller: controller
                     )
                 )
         else if Ember.typeOf(view) is 'class'
-            Modal.reopen(
-                body: view
+            modalComponent.setProperties(
+                body: view,
+                controller: controller
             )
 
-        Modal.appendTo('body')
+        modalComponent.appendTo('body')
 )
