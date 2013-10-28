@@ -4,7 +4,8 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     classNameBindings: ['blockClass']
     classTypePrefix: 'btn'
     block: null
-    attributeBindings: ['disabled', 'dismiss:data-dismiss']
+    attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type']
+    _type: 'button'
 
     init: ->
         @_super()
