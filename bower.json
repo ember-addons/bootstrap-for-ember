@@ -19,6 +19,22 @@
     "css",
     "js"
   ],
+  "main": [
+    "./dist/css/bs-growl-notifications.min.css",
+    "./dist/js/bs-core-min.js",
+    "./dist/js/bs-alert-min.js",
+    "./dist/js/bs-badge.min.js",
+    "./dist/js/bs-basic.min.js",
+    "./dist/js/bs-button.min.js",
+    "./dist/js/bs-growl-notifications.min.js",
+    "./dist/js/bs-label.min.js",
+    "./dist/js/bs-list-group.min.js",
+    "./dist/js/bs-modal.min.js",
+    "./dist/js/bs-nav.min.js",
+    "./dist/js/bs-notifications.min.js",
+    "./dist/js/bs-progressbar.min.js",
+    "./dist/js/bs-wizard.min.js"
+    ],
   "devDependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.9.1",
@@ -29,7 +45,6 @@
   "license": "Apache2",
   "ignore": [
     "**/.*",
-    "*",
     "!dist",
     "!LICENSE",
     "!README.md",
