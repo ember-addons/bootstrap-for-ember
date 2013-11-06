@@ -133,5 +133,5 @@ Bootstrap.ModalManager = Ember.Object.create(
                 controller: controller
             )
 
-        modalComponent.appendTo('body')
+        modalComponent.appendTo(controller.namespace.rootElement)
 )
