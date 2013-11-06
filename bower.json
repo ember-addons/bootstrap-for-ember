@@ -21,8 +21,8 @@
   ],
   "main": [
     "./dist/css/bs-growl-notifications.min.css",
-    "./dist/js/bs-core-min.js",
-    "./dist/js/bs-alert-min.js",
+    "./dist/js/bs-core.min.js",
+    "./dist/js/bs-alert.min.js",
     "./dist/js/bs-badge.min.js",
     "./dist/js/bs-basic.min.js",
     "./dist/js/bs-button.min.js",
