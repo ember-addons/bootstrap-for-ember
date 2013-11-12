@@ -31,11 +31,9 @@ Bootstrap.BsModalComponent = Ember.Component.extend(
 
     becameVisible: ->
         @appendBackdrop() if @get("backdrop")
-        Em.$('body').addClass("modal-open")
 
     becameHidden: ->
         @_backdrop.remove() if @_backdrop
-        Em.$('body').removeClass("modal-open")
 
     appendBackdrop: ->
         parentElement = @$().parent()
