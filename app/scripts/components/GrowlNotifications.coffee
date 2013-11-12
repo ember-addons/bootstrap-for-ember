@@ -11,7 +11,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
     Binding to the GrowlNotificationManager's notifications array
     Each of the array element will be rendered as a notification view (see ItemViewClass)
     ###
-    contentBinding: Ember.Binding.oneWay 'Bootstrap.GNM.notifications'
+    contentBinding: 'Bootstrap.GNM.notifications'
     attributeBindings: ['style']
     showTime: 10000
 
@@ -47,7 +47,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         @property {Boolean} should the view be opaque now?
         Used for fancy fading purposes.
         ###
-        isOpaue: false
+        isOpaque: false
 
         ###
         Lifecycle hook - called when view is created.
@@ -68,7 +68,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
             # Be prepared to auto-hide the notification
             @set "timeoutId", setTimeout((->
                 #@send "close"
-                @close()
+                @send("close")
             ).bind(this), @get("parentView.showTime"))
 
             # Fade in the view.
@@ -117,8 +117,9 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
             close: ->
                 @set('isOpaque', false)
                 setTimeout (->
-                    @set "content.closed", true
+                    @get('parentView.content').removeObject(@get('content'))
                     clearTimeout @get("timeoutId")
+
                 ).bind(@), 300
     )
 )
@@ -133,18 +134,6 @@ Bootstrap.GNM = Bootstrap.GrowlNotificationManager = Ember.Object.create(
     @property {Array} A global array for storing notification objects.
     ###
     notifications: Ember.A()
-
-    ###
-    @observer Not technically necessary, but cleans up the notifications array when all have been closed
-    ###
-    notificationClosed: (->
-        notifications = @get('notifications')
-        #Don't do anything if there are no notifications.
-        return if not notifications.length
-
-        #If all the notifications have been closed, wipe our list clean so cruft doesn't build up
-        @set('notifications', Em.A()) if @get('notifications').everyBy('closed')
-    ).observes('notifications.@each.closed')
 
     ###
     An exposed method for pushing new notification.
