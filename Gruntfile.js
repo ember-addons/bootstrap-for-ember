@@ -379,11 +379,13 @@ module.exports = function (grunt) {
                 options: {
                     template: '<%= yeoman.app %>/templates/showcase/show_components/template.jst',
                     postCompile: function(src, context) {
-                        src = src.replace(/\\{\\{/g,"&#123;&#123;")
-                        src = src.replace(/\\}\\}/g,"&#125;&#125;")
+                        src = src.replace(/\\{\\{/g,"&#123;&#123;");
+                        src = src.replace(/\\}\\}/g,"&#125;&#125;");
+                        src = src.replace(/\&quot\;/g,'"');
+
                         console.log(src);
 
-                        return src
+                        return src;
                     },
                     markdownOptions: {
                         gfm: true,
