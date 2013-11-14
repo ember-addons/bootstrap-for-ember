@@ -6,6 +6,7 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     block: null
     attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type']
     _type: 'button'
+    bubbles: true
 
     init: ->
         @_super()
@@ -22,7 +23,8 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
         if @block then "#{@classTypePrefix}-block" else null
     ).property('block').cacheable()
 
-    click: ->
+    click: (evt) ->
+        evt.stopPropagation() unless @get('bubbles')
         @sendAction('clicked')
 
     loadingChanged: (->
