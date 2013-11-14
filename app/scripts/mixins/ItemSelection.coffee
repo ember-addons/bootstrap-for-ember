@@ -7,6 +7,19 @@ An extra 'active' css class will be assigned to the Item (this) if this is a sel
 Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue, Bootstrap.WithRouter,
     classNameBindings: ["isActive:active"]
 
+    init: ->
+        @_super()
+        @didRouteChange()
+
+    didRouteChange: (->
+        linkTo = @get('content.linkTo')
+        return unless linkTo?
+        itemsView = @get('parentView')
+        return unless itemsView?
+        if @get('router')?.isActive(linkTo)
+            itemsView.set('selected', @get('value'))
+    ).observes('router.url')
+
     ###
     Determine whether the current item is selected,
     if true the 'active' css class will be associated with the this DOM's element.
@@ -15,10 +28,6 @@ Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue, Bootstrap.With
     in the parent ItemsView.
     ###
     isActive: (->
-        #activate default tab if current route matches a tab route
-        if @get('content.linkTo')
-            return true if @get('content.linkTo') and @get('router')?.isActive(@get('content.linkTo'))
-
         #TODO: Ensure parentView is inherited from ItemsView
         itemsView = @get('parentView')
         if not itemsView?
@@ -50,6 +59,9 @@ Bootstrap.ItemSelection = Ember.Mixin.create(Bootstrap.ItemValue, Bootstrap.With
         #TODO: Ensure its an Ember object
         if typeof(content) is 'object'
             return if content.get('disabled')
+
+        # items with linkTo will be dispatched in didRouteChange
+        return if @get('content.linkTo')?
 
         #Currently multi selection is not supported
         itemsView.set('selected', @get('value'))
