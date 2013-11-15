@@ -29,7 +29,7 @@ Showcase.ShowComponentsGrowlNotifController = Ember.Controller.extend({
     Bootstrap.GNM.push('INFO!', 'Hello, this is just an info message.', 'info');
   },
   pushSuccess: function() {
-    ootstrap.GNM.push('SUCCESS!', 'Successfully performed operation!', 'success');
+    Bootstrap.GNM.push('SUCCESS!', 'Successfully performed operation!', 'success');
   },
   pushWarn: function() {
     Bootstrap.GNM.push('WARN!', 'Could not perform operation!', 'warning');
