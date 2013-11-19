@@ -1,4 +1,6 @@
 Showcase.ShowComponentsModalController = Ember.Controller.extend(
+    message: 'Welcome to Bootstrap for Ember..!'
+
     #Footer buttons meta data
     myModalButtons: [
         Ember.Object.create({title: 'Submit', clicked:"submit"})
