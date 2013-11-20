@@ -115,6 +115,7 @@ Bootstrap.ModalManager = Ember.Object.create(
             title: title
             manual: true
             footerButtons: footerButtons
+            targetObject: controller
         )
 
         if Ember.typeOf(view) is 'string'
