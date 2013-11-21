@@ -128,10 +128,9 @@ Modal component.
       return this.get(name).show();
     },
     open: function(name, title, view, footerButtons, controller) {
-      var Modal, template;
-      Modal = controller.container.lookup('component:bs-modal');
-      Modal.set('name', name);
-      Modal.reopen({
+      var modalComponent, template;
+      modalComponent = controller.container.lookup('component:bs-modal');
+      modalComponent.setProperties({
         name: name,
         title: title,
         manual: true,
@@ -142,18 +141,20 @@ Modal component.
         template = controller.container.lookup("template:" + view);
         Ember.assert("Template " + view + " was specified for Modal but template could not be found.", template);
         if (template) {
-          Modal.reopen({
+          modalComponent.setProperties({
             body: Ember.View.extend({
-              template: template
+              template: template,
+              controller: controller
             })
           });
         }
       } else if (Ember.typeOf(view) === 'class') {
-        Modal.reopen({
-          body: view
+        modalComponent.setProperties({
+          body: view,
+          controller: controller
         });
       }
-      return Modal.appendTo('body');
+      return modalComponent.appendTo(controller.namespace.rootElement);
     }
   });
 

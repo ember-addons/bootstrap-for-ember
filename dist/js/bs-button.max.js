@@ -115,7 +115,9 @@
     classNameBindings: ['blockClass'],
     classTypePrefix: 'btn',
     block: null,
-    attributeBindings: ['disabled', 'dismiss:data-dismiss'],
+    attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type'],
+    _type: 'button',
+    bubbles: true,
     init: function() {
       var attr, key, val, _ref, _results, _results1;
       this._super();
@@ -133,7 +135,7 @@
         }
         _results1 = [];
         for (attr in this) {
-          if (attr.match(/^data-\w*$/) != null) {
+          if (attr.match(/^data-[\w-]*$/) != null) {
             _results1.push(this.attributeBindings.pushObject(attr));
           }
         }
@@ -147,7 +149,10 @@
         return null;
       }
     }).property('block').cacheable(),
-    click: function() {
+    click: function(evt) {
+      if (!this.get('bubbles')) {
+        evt.stopPropagation();
+      }
       return this.sendAction('clicked');
     },
     loadingChanged: (function() {

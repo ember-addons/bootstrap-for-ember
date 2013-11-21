@@ -171,7 +171,7 @@
     extraSmallSizeClass: (function() {
       var pref;
       pref = this.get('classTypePrefix');
-      if (this.sx) {
+      if (this.xs) {
         return "" + pref + "-xs";
       } else {
         return null;
