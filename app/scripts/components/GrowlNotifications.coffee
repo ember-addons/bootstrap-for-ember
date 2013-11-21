@@ -22,9 +22,9 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
     itemViewClass: Ember.View.extend(
         classNames: ['growl-notification']
         template: Ember.Handlebars.compile '''
-            <span class="glyphicon {{unbound view.iconType}} icon"></span>
+            <span class="icon"><i class="fa {{unbound view.iconType}}"></i></span>
             <a class="close-notification" {{action "close" target="view"}}>
-                <span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>
+                <span style="font-size: 15px;"><i class="fa fa-times"></i></span>
             </a>
             <strong>
                 {{view.content.title}}
@@ -106,10 +106,10 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         iconType: (->
             type = this.get('content.type')
             hash =
-                'info': 'glyphicon-bullhorn'
-                'success': 'glyphicon-ok'
-                'warning': 'glyphicon-exclamation-sign'
-                'danger': 'glyphicon-remove'
+                'info': 'fa-bullhorn'
+                'success': 'fa-check'
+                'warning': 'fa-exclamation'
+                'danger': 'fa-times'
             hash[type] || ''
         ).property('content.type')
 
