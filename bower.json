@@ -48,6 +48,7 @@
     "!dist",
     "!LICENSE",
     "!README.md",
+    "!bower.json",
     "!dist/",
     "!dist/*",
     "!dist/*/*",
