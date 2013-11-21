@@ -1,7 +1,11 @@
 Bootstrap.BsPill = Bootstrap.ItemView.extend(Bootstrap.NavItem, Bootstrap.ItemSelection,
     template: Ember.Handlebars.compile '''
         {{#if view.content.linkTo}}
-            {{#linkTo view.content.linkTo}}{{view.title}}{{/linkTo}}
+            {{#if view.parentView.dynamicLink}}
+                {{#link-to view.content.linkTo model}}{{view.title}}{{/link-to}}
+            {{else}}
+                {{#linkTo view.content.linkTo}}{{view.title}}{{/linkTo}}
+            {{/if}}
         {{else}}
             {{view view.pillAsLinkView}}
         {{/if}}
