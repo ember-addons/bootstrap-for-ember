@@ -46,7 +46,7 @@ Bootstrap.BsModalComponent = Ember.Component.extend(
         @set 'isVisible', false
 
     toggle: ->
-        @get('isVisible').toggleProperty()
+        @toggleProperty 'isVisible'
 
     click: (event) ->
         target = event.target
@@ -107,6 +107,9 @@ Bootstrap.ModalManager = Ember.Object.create(
 
     show: (name) ->
         @get(name).show()
+    
+    toggle: (name) ->
+        @get(name).toggle()
 
     open: (name, title, view, footerButtons, controller) ->
         modalComponent = controller.container.lookup('component:bs-modal')
