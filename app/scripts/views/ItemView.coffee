@@ -7,7 +7,7 @@ getParentView = (view) ->
     if ok then parentView else undefined
 
 
-# test if the given object is an Ember object or has a get method and use it to reutrn a proeprty
+# test if the given object is an Ember object or has a get method and use it to return a property
 getProperty = (obj, prop, noGetReturns) ->
     return noGetReturns unless Ember.typeOf(obj) is 'instance' or Ember.canInvoke(obj, 'get')
     obj.get prop
