@@ -1,5 +1,5 @@
 Bootstrap = window.Bootstrap
-Showcase = window.Showcase = Ember.Application.createWithMixins(
+Showcase = window.Showcase = Ember.Application.create(
     LOG_TRANSITIONS: true
     LOG_VIEW_LOOKUPS: true
     LOG_ACTIVE_GENERATION: true
