@@ -2,6 +2,7 @@
 Modal component.
 ###
 Bootstrap.BsModalComponent = Ember.Component.extend(
+    layoutName: 'components/bs-modal'
     classNames: ['modal']
     #classNameBindings: ['fade']
     attributeBindings: ['role', 'aria-labelledby', 'isAriaHidden:aria-hidden', "ariaLabelledBy:aria-labelledby"]
@@ -139,3 +140,5 @@ Bootstrap.ModalManager = Ember.Object.create(
 
         modalComponent.appendTo(controller.namespace.rootElement)
 )
+
+Ember.Handlebars.helper 'bs-modal', Bootstrap.BsModalComponent

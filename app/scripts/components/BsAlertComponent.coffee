@@ -1,6 +1,7 @@
 Bootstrap.BsAlertComponent = Ember.Component.extend(Bootstrap.TypeSupport,
     classNames: ['alert'],
     classNameBindings: ['fade', 'fade:in']
+    layoutName: 'components/bs-alert'
     classTypePrefix: 'alert',
     attributeBindings: ['data-timeout']
     dismissAfter: 0
@@ -24,3 +25,5 @@ Bootstrap.BsAlertComponent = Ember.Component.extend(Bootstrap.TypeSupport,
         Ember.$("##{@elementId}").alert('close')
 
 )
+
+Ember.Handlebars.helper 'bs-alert', Bootstrap.BsAlertComponent

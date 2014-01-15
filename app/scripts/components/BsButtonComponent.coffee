@@ -1,4 +1,5 @@
 Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Bootstrap.SizeSupport,
+    layoutName: 'components/bs-button'
     tagName: 'button'
     classNames: ['btn']
     classNameBindings: ['blockClass']
@@ -32,3 +33,5 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
         Ember.$("##{@elementId}").button(loading)
     ).observes('loading')
 )
+
+Ember.Handlebars.helper 'bs-button', Bootstrap.BsButtonComponent

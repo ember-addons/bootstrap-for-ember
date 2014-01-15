@@ -1,4 +1,5 @@
 Bootstrap.BsProgressbarComponent = Ember.Component.extend(Bootstrap.TypeSupport,
+    layoutName: 'components/bs-progressbar'
     classNames: ['progress-bar']
     attributeBindings: ['style', 'role', 'aria-valuemin', 'ariaValueNow:aria-valuenow', 'aria-valuemax']
     classTypePrefix: 'progress-bar'
@@ -17,3 +18,5 @@ Bootstrap.BsProgressbarComponent = Ember.Component.extend(Bootstrap.TypeSupport,
         @progress
     ).property('progress').cacheable()
 )
+
+Ember.Handlebars.helper 'bs-progressbar', Bootstrap.BsProgressbarComponent

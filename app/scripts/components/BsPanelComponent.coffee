@@ -1,4 +1,5 @@
 Bootstrap.BsPanelComponent = Ember.Component.extend(Bootstrap.TypeSupport,
+    layoutName: 'components/bs-panel'
     classNames: ['panel']
     classTypePrefix: ['panel']
     classNameBindings: ['fade', 'fade:in']
@@ -30,3 +31,5 @@ Bootstrap.BsPanelComponent = Ember.Component.extend(Bootstrap.TypeSupport,
         "##{@get('elementId')}_body"
     ).property('collapsibleBodyId')
 )
+
+Ember.Handlebars.helper 'bs-panel', Bootstrap.BsPanelComponent

@@ -15,4 +15,4 @@ Bootstrap.BsBtnGroup = Bootstrap.ItemsView.extend(Bootstrap.SizeSupport, Bootstr
     )
 )
 
-Ember.Handlebars.helper('bs-btn-group', Bootstrap.BsBtnGroup)
+Ember.Handlebars.helper 'bs-btn-group', Bootstrap.BsBtnGroup

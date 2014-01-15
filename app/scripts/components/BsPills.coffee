@@ -6,4 +6,4 @@ Bootstrap.BsPills = Bootstrap.ItemsView.extend(Bootstrap.Nav,
     itemViewClass: Bootstrap.BsPill
 )
 
-Ember.Handlebars.helper('bs-pills', Bootstrap.BsPills)
+Ember.Handlebars.helper 'bs-pills', Bootstrap.BsPills

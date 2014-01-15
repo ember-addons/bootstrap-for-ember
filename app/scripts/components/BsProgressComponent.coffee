@@ -2,6 +2,7 @@
 Parent component of a progressbar component
 ###
 Bootstrap.BsProgressComponent = Ember.Component.extend(
+    layoutName: 'components/bs-progress'
     classNames: ['progress']
     classNameBindings: ['animated:active', 'stripped:progress-striped']
 
@@ -14,3 +15,5 @@ Bootstrap.BsProgressComponent = Ember.Component.extend(
         @progress
     ).property('progress')
 )
+
+Ember.Handlebars.helper 'bs-progress', Bootstrap.BsProgressComponent

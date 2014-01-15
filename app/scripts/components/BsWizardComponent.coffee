@@ -172,4 +172,4 @@ Bootstrap.BsWizardComponent = Bootstrap.BsWizardComponent.reopenClass(
         wizard.append()
 )
 
-Ember.Handlebars.helper('bs-wizard', Bootstrap.BsWizardComponent)
+Ember.Handlebars.helper 'bs-wizard', Bootstrap.BsWizardComponent
