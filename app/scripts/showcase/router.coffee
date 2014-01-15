@@ -15,6 +15,7 @@ Showcase.Router.map(() ->
         @route 'tabs'
         @route 'tabs-panes'
         @route 'wizard'
+        @route 'items_action_bar'
         @route 'tabs-with-routes'
         @route 'notifications'
         @route 'growl-notif'

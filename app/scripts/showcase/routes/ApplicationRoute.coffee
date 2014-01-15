@@ -18,6 +18,7 @@ Showcase.ApplicationRoute = Ember.Route.extend(
             Ember.Object.create({title: "Nav - Tabs with Routes", special: true, route: "show_components.tabs-with-routes"})
             Ember.Object.create({title: "Wizard", special: true, route: "show_components.wizard"})
             Ember.Object.create({title: "Notifications", special: true, route: "show_components.notifications"})
+            Ember.Object.create({title: "Items Action Bar", route: "show_components.items_action_bar"})
             Ember.Object.create({title: "Growl Notifications", special: true, route: "show_components.growl-notif"})
         ]
 )
