@@ -18,4 +18,7 @@ Showcase.ShowComponentsButtonController = Ember.Controller.extend(
             Ember.run.later(() =>
                 @set 'loadingState1', 'completed'
             , 2000)
+
+        buttonWithParam: (expectedMyself) ->
+            alert "Passed controller as a param: #{expectedMyself}"
 )

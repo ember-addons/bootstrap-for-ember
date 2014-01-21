@@ -4,6 +4,7 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     classNames: ['btn']
     classNameBindings: ['blockClass']
     classTypePrefix: 'btn'
+    clickedParam: null
     block: null
     attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type']
     _type: 'button'
@@ -26,7 +27,7 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
 
     click: (evt) ->
         evt.stopPropagation() unless @get('bubbles')
-        @sendAction('clicked')
+        @sendAction('clicked', @get('clickedParam'))
 
     loadingChanged: (->
         loading = if @get('loading') isnt null then @get('loading') else "reset"

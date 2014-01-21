@@ -85,6 +85,30 @@ Disabled state can also be hooked to a controller property
 * `isButtonDisabled` is a boolean property on the controller
 * `disableButton` is a function on the controller that sets `isButtonDisabled` to _false_
 
+## Param
+
+It is possible to pass a parameter to the action in the controller that is bound to the click event by using the `clickedParam` property.
+
+<div class="bs-example">
+    {{#bs-button type="primary" clicked="buttonWithParam" clickedParamBinding="controller"}}Button with Param{{/bs-button}}
+</div>
+
+
+``` html
+\{\{#bs-button type="primary" clicked="buttonWithParam" clickedParamBinding="controller"\}\}Button with Param\{\{/bs-button\}\}
+```
+
+Action in controller:
+
+``` javascript
+MyController = Ember.Controller.extend({
+    actions: {
+        buttonWithParam: function(expectedMyself) {
+            alert("Passed controller as a param: " + expectedMyself);
+        }
+    }
+)}
+```
 
 ## State
 
@@ -161,6 +185,10 @@ Pay attention that this time the `loadingState` is set to `completed` and not `n
             <tr>
                 <td>clicked</td>
                 <td>Triggers the specified function name on the <strong>controller</strong> immediately when the button is clicked.</td>
+            </tr>
+            <tr>
+                <td>clickedParam</td>
+                <td>A parameter to pass the action to be invoked immediately when the button is clicked</td>
             </tr>
             <tr>
                 <td>size</td>
