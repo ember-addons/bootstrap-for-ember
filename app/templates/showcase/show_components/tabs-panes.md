@@ -27,13 +27,16 @@ Here is the controller _tabsPanesOptions_ property:
 ``` javascript
 SomeController = Ember.Controller.extend({
     tabsMeta: Ember.A([
-            Ember.Object.create({ title: 'Foo', template: 'tabs/foo-tabpane'}),
+            Ember.Object.create({ title: 'Foo', template: 'tabs/foo-tabpane', controller: 'ShowcaseComponentsTabsFoo'}),
             Ember.Object.create({ title: 'Bar', template: 'tabs/bar-tabpane'})
     ]);
 });
-```
 
 The `template: 'some-template'` defines what template to render in the corresponding _Tab Pane_ when the Tab is selected.
+
+```
+Note that for the `Foo` tab, a `controller` property was defined, calling `\{\{controller\}\}` within the tab pane template `tabs/foo-tabpane` will point to the specified `ShowcaseComponentsTabsFoo` controller instead of the default controller
+which is the controller of the template the `\{\{bs-tabs-panes\}\}` was called from.
 
 
 Thats all needed! awesome isn't it?

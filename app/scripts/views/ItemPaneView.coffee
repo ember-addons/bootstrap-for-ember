@@ -14,6 +14,14 @@ Bootstrap.ItemPaneView = Ember.View.extend(
     isVisible: (->
         @get('corrItem')?.get('isActive')
     ).property('corrItem.isActive')
+
+    controller: (->
+        controller = @get('parentView.controller')
+        if @get('content.controller')
+            itemController = @get('container').lookup("controller:#{@get('content.controller')}")
+            controller = itemController if itemController
+        return controller
+    ).property('content')
 )
 
 #TODO: Is there a simple way to do this without passing through a helper?

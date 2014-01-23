@@ -4,7 +4,7 @@ Showcase.ShowComponentsPillsController = Ember.Controller.extend(
     init: () ->
         @._super()
         @set('content1', Ember.A([
-            Ember.Object.create({ title: 'Home', disabled: false }),
+            Ember.Object.create({ title: 'Home', default: true, disabled: false }),
             Ember.Object.create({ title: 'Admin', disabled: true })
         ]))
 
