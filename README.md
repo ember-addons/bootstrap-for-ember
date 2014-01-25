@@ -67,6 +67,7 @@ App = Ember.Application.createWithMixins(Bootstrap.Register);
 
 * Bootstrap 3 css.
 * Fontawesome 4.
+* Ember.js 1.3.1 or higher.
 
 ### Step by Step
 

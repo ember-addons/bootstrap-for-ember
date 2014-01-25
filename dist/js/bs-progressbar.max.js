@@ -5,6 +5,7 @@ Parent component of a progressbar component
 
 (function() {
   Bootstrap.BsProgressComponent = Ember.Component.extend({
+    layoutName: 'components/bs-progress',
     classNames: ['progress'],
     classNameBindings: ['animated:active', 'stripped:progress-striped'],
     progress: null,
@@ -15,10 +16,13 @@ Parent component of a progressbar component
     }).property('progress')
   });
 
+  Ember.Handlebars.helper('bs-progress', Bootstrap.BsProgressComponent);
+
 }).call(this);
 
 (function() {
   Bootstrap.BsProgressbarComponent = Ember.Component.extend(Bootstrap.TypeSupport, {
+    layoutName: 'components/bs-progressbar',
     classNames: ['progress-bar'],
     attributeBindings: ['style', 'role', 'aria-valuemin', 'ariaValueNow:aria-valuenow', 'aria-valuemax'],
     classTypePrefix: 'progress-bar',
@@ -35,6 +39,8 @@ Parent component of a progressbar component
       return this.progress;
     }).property('progress').cacheable()
   });
+
+  Ember.Handlebars.helper('bs-progressbar', Bootstrap.BsProgressbarComponent);
 
 }).call(this);
 

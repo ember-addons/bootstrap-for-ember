@@ -5,6 +5,7 @@ Modal component.
 
 (function() {
   Bootstrap.BsModalComponent = Ember.Component.extend({
+    layoutName: 'components/bs-modal',
     classNames: ['modal'],
     attributeBindings: ['role', 'aria-labelledby', 'isAriaHidden:aria-hidden', "ariaLabelledBy:aria-labelledby"],
     isAriaHidden: (function() {
@@ -52,7 +53,7 @@ Modal component.
       return this.set('isVisible', false);
     },
     toggle: function() {
-      return this.get('isVisible').toggleProperty();
+      return this.toggleProperty('isVisible');
     },
     click: function(event) {
       var target, targetDismiss;
@@ -127,6 +128,9 @@ Modal component.
     show: function(name) {
       return this.get(name).show();
     },
+    toggle: function(name) {
+      return this.get(name).toggle();
+    },
     open: function(name, title, view, footerButtons, controller) {
       var modalComponent, template;
       modalComponent = controller.container.lookup('component:bs-modal');
@@ -157,6 +161,8 @@ Modal component.
       return modalComponent.appendTo(controller.namespace.rootElement);
     }
   });
+
+  Ember.Handlebars.helper('bs-modal', Bootstrap.BsModalComponent);
 
 }).call(this);
 

@@ -1,5 +1,6 @@
 (function() {
   Bootstrap.BsWellComponent = Ember.Component.extend({
+    layoutName: 'components/bs-well',
     classNameBindings: ['small:well-sm', 'large:well-lg'],
     classNames: ['well'],
     click: function() {
@@ -7,17 +8,23 @@
     }
   });
 
+  Ember.Handlebars.helper('bs-well', Bootstrap.BsWellComponent);
+
 }).call(this);
 
 (function() {
   Bootstrap.BsPageHeaderComponent = Ember.Component.extend({
+    layoutName: 'components/bs-page-header',
     classNames: ['page-header']
   });
+
+  Ember.Handlebars.helper('bs-page-header', Bootstrap.BsPageHeaderComponent);
 
 }).call(this);
 
 (function() {
   Bootstrap.BsPanelComponent = Ember.Component.extend(Bootstrap.TypeSupport, {
+    layoutName: 'components/bs-panel',
     classNames: ['panel'],
     classTypePrefix: ['panel'],
     classNameBindings: ['fade', 'fade:in'],
@@ -45,6 +52,8 @@
       return "#" + (this.get('elementId')) + "_body";
     }).property('collapsibleBodyId')
   });
+
+  Ember.Handlebars.helper('bs-panel', Bootstrap.BsPanelComponent);
 
 }).call(this);
 

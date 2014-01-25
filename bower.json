@@ -1,6 +1,6 @@
 {
   "name": "ember-addons.bootstrap_for_ember",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Bootstrap for Ember.js",
   "homepage": "http://ember-addons.github.io/bootstrap-for-ember",
   "authors": [
@@ -27,6 +27,7 @@
     "./dist/js/bs-basic.min.js",
     "./dist/js/bs-button.min.js",
     "./dist/js/bs-growl-notifications.min.js",
+    "./dist/js/bs-items-action-bar.min.js",
     "./dist/js/bs-label.min.js",
     "./dist/js/bs-list-group.min.js",
     "./dist/js/bs-modal.min.js",
