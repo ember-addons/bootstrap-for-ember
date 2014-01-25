@@ -5,6 +5,7 @@ Modal component.
 
 (function() {
   Bootstrap.BsModalComponent = Ember.Component.extend({
+    layoutName: 'components/bs-modal',
     classNames: ['modal'],
     attributeBindings: ['role', 'aria-labelledby', 'isAriaHidden:aria-hidden', "ariaLabelledBy:aria-labelledby"],
     isAriaHidden: (function() {
@@ -52,7 +53,7 @@ Modal component.
       return this.set('isVisible', false);
     },
     toggle: function() {
-      return this.get('isVisible').toggleProperty();
+      return this.toggleProperty('isVisible');
     },
     click: function(event) {
       var target, targetDismiss;
@@ -127,11 +128,13 @@ Modal component.
     show: function(name) {
       return this.get(name).show();
     },
+    toggle: function(name) {
+      return this.get(name).toggle();
+    },
     open: function(name, title, view, footerButtons, controller) {
-      var Modal, template;
-      Modal = controller.container.lookup('component:bs-modal');
-      Modal.set('name', name);
-      Modal.reopen({
+      var modalComponent, template;
+      modalComponent = controller.container.lookup('component:bs-modal');
+      modalComponent.setProperties({
         name: name,
         title: title,
         manual: true,
@@ -142,20 +145,24 @@ Modal component.
         template = controller.container.lookup("template:" + view);
         Ember.assert("Template " + view + " was specified for Modal but template could not be found.", template);
         if (template) {
-          Modal.reopen({
+          modalComponent.setProperties({
             body: Ember.View.extend({
-              template: template
+              template: template,
+              controller: controller
             })
           });
         }
       } else if (Ember.typeOf(view) === 'class') {
-        Modal.reopen({
-          body: view
+        modalComponent.setProperties({
+          body: view,
+          controller: controller
         });
       }
-      return Modal.appendTo('body');
+      return modalComponent.appendTo(controller.namespace.rootElement);
     }
   });
+
+  Ember.Handlebars.helper('bs-modal', Bootstrap.BsModalComponent);
 
 }).call(this);
 

@@ -63,55 +63,6 @@
 }).call(this);
 
 (function() {
-  var Bootstrap;
-
-  Bootstrap = window.Bootstrap;
-
-  Bootstrap.Register = Ember.Mixin.create({
-    init: function() {
-      this._super();
-      if (Bootstrap.BsAlertComponent != null) {
-        this.BsAlertComponent = Bootstrap.BsAlertComponent;
-      }
-      if (Bootstrap.BsModalComponent != null) {
-        this.BsModalComponent = Bootstrap.BsModalComponent;
-      }
-      if (Bootstrap.BsWizardComponent != null) {
-        this.BsWizardComponent = Bootstrap.BsWizardComponent;
-      }
-      if (Bootstrap.BsLabelComponent != null) {
-        this.BsLabelComponent = Bootstrap.BsLabelComponent;
-      }
-      if (Bootstrap.BsBadgeComponent != null) {
-        this.BsBadgeComponent = Bootstrap.BsBadgeComponent;
-      }
-      if (Bootstrap.BsWellComponent != null) {
-        this.BsWellComponent = Bootstrap.BsWellComponent;
-      }
-      if (Bootstrap.BsPageHeaderComponent != null) {
-        this.BsPageHeaderComponent = Bootstrap.BsPageHeaderComponent;
-      }
-      if (Bootstrap.BsPanelComponent != null) {
-        this.BsPanelComponent = Bootstrap.BsPanelComponent;
-      }
-      if (Bootstrap.BsButtonComponent != null) {
-        this.BsButtonComponent = Bootstrap.BsButtonComponent;
-      }
-      if (Bootstrap.BsBtnToolbarComponent != null) {
-        this.BsBtnToolbarComponent = Bootstrap.BsBtnToolbarComponent;
-      }
-      if (Bootstrap.BsProgressComponent != null) {
-        this.BsProgressComponent = Bootstrap.BsProgressComponent;
-      }
-      if (Bootstrap.BsProgressbarComponent != null) {
-        return this.BsProgressbarComponent = Bootstrap.BsProgressbarComponent;
-      }
-    }
-  });
-
-}).call(this);
-
-(function() {
   var Bootstrap, get;
 
   Bootstrap = window.Bootstrap;
@@ -171,7 +122,7 @@
     extraSmallSizeClass: (function() {
       var pref;
       pref = this.get('classTypePrefix');
-      if (this.sx) {
+      if (this.xs) {
         return "" + pref + "-xs";
       } else {
         return null;
@@ -466,7 +417,18 @@ Views that inherits from this view can be enhanced with:
     isVisible: (function() {
       var _ref;
       return (_ref = this.get('corrItem')) != null ? _ref.get('isActive') : void 0;
-    }).property('corrItem.isActive')
+    }).property('corrItem.isActive'),
+    controller: (function() {
+      var controller, itemController;
+      controller = this.get('parentView.controller');
+      if (this.get('content.controller')) {
+        itemController = this.get('container').lookup("controller:" + (this.get('content.controller')));
+        if (itemController) {
+          controller = itemController;
+        }
+      }
+      return controller;
+    }).property('content')
   });
 
   Ember.Handlebars.helper("bsItemPanePartial", function(templateName, options) {

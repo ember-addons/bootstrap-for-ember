@@ -110,12 +110,16 @@
 
 (function() {
   Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Bootstrap.SizeSupport, {
+    layoutName: 'components/bs-button',
     tagName: 'button',
     classNames: ['btn'],
     classNameBindings: ['blockClass'],
     classTypePrefix: 'btn',
+    clickedParam: null,
     block: null,
-    attributeBindings: ['disabled', 'dismiss:data-dismiss'],
+    attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type'],
+    _type: 'button',
+    bubbles: true,
     init: function() {
       var attr, key, val, _ref, _results, _results1;
       this._super();
@@ -133,7 +137,7 @@
         }
         _results1 = [];
         for (attr in this) {
-          if (attr.match(/^data-\w*$/) != null) {
+          if (attr.match(/^data-[\w-]*$/) != null) {
             _results1.push(this.attributeBindings.pushObject(attr));
           }
         }
@@ -147,8 +151,11 @@
         return null;
       }
     }).property('block').cacheable(),
-    click: function() {
-      return this.sendAction('clicked');
+    click: function(evt) {
+      if (!this.get('bubbles')) {
+        evt.stopPropagation();
+      }
+      return this.sendAction('clicked', this.get('clickedParam'));
     },
     loadingChanged: (function() {
       var loading;
@@ -156,6 +163,8 @@
       return Ember.$("#" + this.elementId).button(loading);
     }).observes('loading')
   });
+
+  Ember.Handlebars.helper('bs-button', Bootstrap.BsButtonComponent);
 
 }).call(this);
 
@@ -190,8 +199,11 @@ A collection of button groups
 
 (function() {
   Bootstrap.BsBtnToolbarComponent = Ember.Component.extend({
+    layoutName: 'components/bs-btn-toolbar',
     classNames: ['btn-toolbar']
   });
+
+  Ember.Handlebars.helper('bs-btn-toolbar', Bootstrap.BsBtnToolbarComponent);
 
 }).call(this);
 

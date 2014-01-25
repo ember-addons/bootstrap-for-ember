@@ -16,7 +16,7 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
     Each of the array element will be rendered as a notification view (see ItemViewClass)
     */
 
-    contentBinding: Ember.Binding.oneWay('Bootstrap.GNM.notifications'),
+    contentBinding: 'Bootstrap.GNM.notifications',
     attributeBindings: ['style'],
     showTime: 10000,
     /*
@@ -26,7 +26,7 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
 
     itemViewClass: Ember.View.extend({
       classNames: ['growl-notification'],
-      template: Ember.Handlebars.compile('<span class="glyphicon {{unbound view.iconType}} icon"></span>\n<a class="close-notification" {{action "close" target="view"}}>\n    <span style="font-size: 15px;" class="glyphicon glyphicon-remove"></span>\n</a>\n<strong>\n    {{view.content.title}}\n</strong>\n<p>\n    {{view.content.sub}}\n</p>'),
+      template: Ember.Handlebars.compile('<span class="icon"><i class="fa {{unbound view.iconType}}"></i></span>\n<a class="close-notification" {{action "close" target="view"}}>\n    <span style="font-size: 15px;"><i class="fa fa-times"></i></span>\n</a>\n<strong>\n    {{view.content.title}}\n</strong>\n<p>\n    {{view.content.sub}}\n</p>'),
       classNameBindings: [":growl-notification", "content.closed", "isOpaque"],
       attributeBindings: ['style'],
       /*
@@ -39,7 +39,7 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
       Used for fancy fading purposes.
       */
 
-      isOpaue: false,
+      isOpaque: false,
       /*
       Lifecycle hook - called when view is created.
       */
@@ -59,7 +59,7 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
 
       didInsertElement: function() {
         this.set("timeoutId", setTimeout((function() {
-          return this.close();
+          return this.send("close");
         }).bind(this), this.get("parentView.showTime")));
         return Ember.run.later(this, (function() {
           return this.set("isOpaque", true);
@@ -71,13 +71,6 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
 
       willDestroyElement: function() {
         return $(window).unbind('resize', this.get('_recomputeStyle'));
-      },
-      close: function() {
-        this.set('isOpaque', false);
-        return setTimeout((function() {
-          this.set("content.closed", true);
-          return clearTimeout(this.get("timeoutId"));
-        }).bind(this), 300);
       },
       style: (function() {
         var column, index, notifications, rightPx, row, topPx, unitHeight, unitWidth, unitsPerColumn, viewportHeight;
@@ -104,13 +97,22 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
         var hash, type;
         type = this.get('content.type');
         hash = {
-          'info': 'glyphicon-bullhorn',
-          'success': 'glyphicon-ok',
-          'warning': 'glyphicon-exclamation-sign',
-          'danger': 'glyphicon-remove'
+          'info': 'fa-bullhorn',
+          'success': 'fa-check',
+          'warning': 'fa-exclamation',
+          'danger': 'fa-times'
         };
         return hash[type] || '';
-      }).property('content.type')
+      }).property('content.type'),
+      actions: {
+        close: function() {
+          this.set('isOpaque', false);
+          return setTimeout((function() {
+            this.get('parentView.content').removeObject(this.get('content'));
+            return clearTimeout(this.get("timeoutId"));
+          }).bind(this), 300);
+        }
+      }
     })
   });
 
@@ -127,20 +129,6 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
     */
 
     notifications: Ember.A(),
-    /*
-    @observer Not technically necessary, but cleans up the notifications array when all have been closed
-    */
-
-    notificationClosed: (function() {
-      var notifications;
-      notifications = this.get('notifications');
-      if (!notifications.length) {
-        return;
-      }
-      if (this.get('notifications').everyBy('closed')) {
-        return this.set('notifications', Em.A());
-      }
-    }).observes('notifications.@each.closed'),
     /*
     An exposed method for pushing new notification.
     @param title {String} leading text
