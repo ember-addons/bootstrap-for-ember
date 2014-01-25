@@ -31,7 +31,7 @@ Bootstrap.ItemsActionBar = Ember.CollectionView.extend
             ")
 
             disabled: (->
-                @get('content.disabled')(@get('parentView.parentView.selection'))
+                @get('content.disabled')?(@get('parentView.parentView.selection'))
             ).property('parentView.parentView.selection.@each', 'parentView.parentView.selection')
 
             click: ->
