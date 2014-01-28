@@ -55,14 +55,6 @@ bower install ember-addons.bs_for_ember --save
 **Note:** You still need to include the bootstrap css file, but you don't need to include any bootstrap JS files.
 
 
-#### Register components by Mixin
-
-When you create your app, use the `Register` mixin to register the components:
-
-``` javascripts
-App = Ember.Application.createWithMixins(Bootstrap.Register);
-```
-
 ### Dependencies
 
 * Bootstrap 3 css.
