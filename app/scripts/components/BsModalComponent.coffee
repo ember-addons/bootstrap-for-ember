@@ -113,7 +113,9 @@ Bootstrap.ModalManager = Ember.Object.create(
         @get(name).toggle()
 
     open: (name, title, view, footerButtons, controller) ->
-        modalComponent = controller.container.lookup('component:bs-modal')
+        cl = controller.container.lookup 'component-lookup:main'
+        modalComponent = cl.lookupFactory('bs-modal', controller.get('container')).create()
+
         modalComponent.setProperties(
             name: name
             title: title
@@ -141,4 +143,7 @@ Bootstrap.ModalManager = Ember.Object.create(
         modalComponent.appendTo(controller.namespace.rootElement)
 )
 
-Ember.Handlebars.helper 'bs-modal', Bootstrap.BsModalComponent
+Ember.Application.initializer
+    name: 'bs-modal'
+    initialize: (container, application) ->
+        container.register 'component:bs-modal', Bootstrap.BsModalComponent
