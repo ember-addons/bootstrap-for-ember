@@ -132,8 +132,9 @@ Modal component.
       return this.get(name).toggle();
     },
     open: function(name, title, view, footerButtons, controller) {
-      var modalComponent, template;
-      modalComponent = controller.container.lookup('component:bs-modal');
+      var cl, modalComponent, template;
+      cl = controller.container.lookup('component-lookup:main');
+      modalComponent = cl.lookupFactory('bs-modal', controller.get('container')).create();
       modalComponent.setProperties({
         name: name,
         title: title,
@@ -162,7 +163,12 @@ Modal component.
     }
   });
 
-  Ember.Handlebars.helper('bs-modal', Bootstrap.BsModalComponent);
+  Ember.Application.initializer({
+    name: 'bs-modal',
+    initialize: function(container, application) {
+      return container.register('component:bs-modal', Bootstrap.BsModalComponent);
+    }
+  });
 
 }).call(this);
 
