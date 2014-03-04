@@ -192,7 +192,7 @@ Pay attention that this time the `loadingState` is set to `completed` and not `n
             </tr>
             <tr>
                 <td>size</td>
-                <td>Can be: _sx_ | _sm_ | _lg_</td>
+                <td>Can be: _xs_ | _sm_ | _lg_</td>
             </tr>
             <tr>
                 <td>xs</td>
