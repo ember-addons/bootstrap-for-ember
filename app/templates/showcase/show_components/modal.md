@@ -26,8 +26,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   myModalButtons: [
-    {title: 'Submit', clicked: "submit"},
-    {title: 'Cancel', clicked: "cancel", dismiss: 'modal'}
+      Ember.Object.create({title: 'Submit', clicked:"submit"})
+      Ember.Object.create({title: 'Cancel', clicked:"cancel", dismiss: 'modal'})
   ],
 
   actions: {
@@ -36,12 +36,12 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend({
       Bootstrap.NM.push('Successfully submitted modal', 'success');
       return Bootstrap.ModalManager.hide('myModal');
     },
-  
+
     //Cancel the modal, we don't need to hide the model manually because we set {..., dismiss: 'modal'} on the button meta data
     cancel: function() {
       return Bootstrap.NM.push('Modal was cancelled', 'info');
     },
-  
+
     //Show the modal
     show: function() {
       return Bootstrap.ModalManager.show('myModal');
@@ -71,8 +71,8 @@ _Controller's code_:
 ``` javascript
 Showcase.ShowComponentsModalController = Ember.Controller.extend({
   manualButtons: [
-    {title: 'Submit', clicked: "submitManual"},
-    {title: 'Cancel', dismiss: 'modal'}
+      Ember.Object.create({title: 'Submit', clicked:"submitManual"})
+      Ember.Object.create({title: 'Cancel', dismiss: 'modal'})
   ],
 
   actions: {
