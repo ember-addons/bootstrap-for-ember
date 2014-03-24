@@ -19,6 +19,7 @@ Showcase.Router.map(() ->
         @route 'tabs-with-routes'
         @route 'notifications'
         @route 'growl-notif'
+        @route 'popover'
         @resource('user', ->
             @route ('general')
             @route ('privacy')
