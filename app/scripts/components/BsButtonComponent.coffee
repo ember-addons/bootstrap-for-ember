@@ -15,7 +15,7 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
         #If content is an object, then assign its properties to the button component
         if @get('content')? and Ember.typeOf(@get('content')) is 'instance'
             for key,val of @get('content')
-                @set key, val
+                @set key, val if key? and key != 'constructor'
         else
             if not @get('title')?
                 @set('title', @get('content'))
