@@ -61,4 +61,4 @@ Simply define a template per nested route, just like you would do if each nested
 
 ## Live example
 
-Want to see it alive? take a look here: {{#linkTo "user.general"}}User Profile{{/linkTo}}
+Want to see it alive? take a look here: {{#link-to "user.general"}}User Profile{{/link-to}}

@@ -27,4 +27,4 @@ Showcase.ShowComponentsTabsController = Ember.Controller.extend({
 
 ## Panes
 
-Please see {{#linkTo "show_components.tabs-panes"}}Tab Panes{{/linkTo}} for more info about Tab Panes.
+Please see {{#link-to "show_components.tabs-panes"}}Tab Panes{{/link-to}} for more info about Tab Panes.

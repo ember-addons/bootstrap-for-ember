@@ -4,7 +4,7 @@ Bootstrap.BsPill = Bootstrap.ItemView.extend(Bootstrap.NavItem, Bootstrap.ItemSe
             {{#if view.parentView.dynamicLink}}
                 {{#link-to view.content.linkTo model}}{{view.title}}{{/link-to}}
             {{else}}
-                {{#linkTo view.content.linkTo}}{{view.title}}{{/linkTo}}
+                {{#link-to view.content.linkTo}}{{view.title}}{{/link-to}}
             {{/if}}
         {{else}}
             {{view view.pillAsLinkView}}

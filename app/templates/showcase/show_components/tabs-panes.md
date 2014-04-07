@@ -1,6 +1,6 @@
 # Tab Panes
 
-Defining {{#linkTo "show_components.tabs"}}Tab Component{{/linkTo}} covers the Tabs rendering and help you to interact with the selected tab. But usually some content should be rendered as a response for a tab click right?
+Defining {{#link-to "show_components.tabs"}}Tab Component{{/link-to}} covers the Tabs rendering and help you to interact with the selected tab. But usually some content should be rendered as a response for a tab click right?
 
 This is where _Tab Panes_ come into play, a tab pane is the content area of each rendered tab, when a tab is selected, the corresponding _tab pane_ becomes visible, see below for the possible options.
 

@@ -1,7 +1,7 @@
 {{#if heading}}
     <div class="panel-heading">
         {{#if collapsible}}
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" {{bindAttr href=collapsibleBodyLink}}>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" {{bind-attr href=collapsibleBodyLink}}>
                 {{heading}}
             </a>
         {{else}}
@@ -14,7 +14,7 @@
 {{/if}}
 
 {{#if collapsible}}
-    <div {{bindAttr id=collapsibleBodyId}} {{bindAttr class=":panel-collapse :collapse open:in"}}>
+    <div {{bind-attr id=collapsibleBodyId}} {{bind-attr class=":panel-collapse :collapse open:in"}}>
         <div class="panel-body">{{yield}}</div>
     </div>
 {{else}}
