@@ -61,7 +61,7 @@ Bootstrap.BsPopoverComponent = Ember.Component.extend(
     ).property("realPlacement")
 
     titleBinding: "data.title"
-    contentBinding: "data.content"
+    content: Ember.computed.alias('data.content')
     html: false
     delay: 0
     animation: true
