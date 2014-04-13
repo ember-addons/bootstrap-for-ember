@@ -2,6 +2,7 @@ Showcase.ApplicationRoute = Ember.Route.extend(
     model: () ->
         [
             Ember.Object.create({title: "Alert", route: "show_components.alert"})
+            Ember.Object.create({title: "Breadcrumbs", route: "show_components.breadcrumbs", new: true})
             Ember.Object.create({title: "Modal", route: "show_components.modal"})
             Ember.Object.create({title: "Label", route: "show_components.label"})
             Ember.Object.create({title: "Badge", route: "show_components.badge"})

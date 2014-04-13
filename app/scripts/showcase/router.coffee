@@ -1,6 +1,7 @@
 Showcase.Router.map(() ->
     @resource 'show_components', ->
         @route 'alert'
+        @route 'breadcrumbs'
         @route 'modal'
         @route 'label'
         @route 'badge'
