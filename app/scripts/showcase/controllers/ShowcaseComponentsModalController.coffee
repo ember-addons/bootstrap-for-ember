@@ -40,4 +40,14 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend(
             )
 
             Bootstrap.ModalManager.open('manualModal', 'Hello', 'demo-template', @manualButtons, @)
+
+        confirm: ->
+            Bootstrap.ModalManager.confirm(@);
+
+        modalConfirmed: ->
+            Bootstrap.NM.push('Confirmed!', 'success')
+
+        modalCanceled: ->
+            Bootstrap.NM.push('Cancelled!', 'info')
+
 )

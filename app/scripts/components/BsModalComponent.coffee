@@ -11,6 +11,7 @@ Bootstrap.BsModalComponent = Ember.Component.extend(
     ).property('isVisible')
     modalBackdrop: '<div class="modal-backdrop fade in"></div>'
     role: 'dialog'
+    footerViews: []
 
     #--Defaults--
     backdrop: true
@@ -94,8 +95,12 @@ Bootstrap.BsModalComponent = Bootstrap.BsModalComponent.reopenClass(
 ###
 
 Bootstrap.ModalManager = Ember.Object.create(
-    add: (name, modalView) ->
-        @set name, modalView
+    add: (name, modalInstance) ->
+        @set name, modalInstance
+
+    register: (name, modalInstance) ->
+        @add(name, modalInstance);
+        modalInstance.appendTo(modalInstance.get('targetObject').namespace.rootElement)
 
     remove: (name) ->
         @set name, null
@@ -108,9 +113,24 @@ Bootstrap.ModalManager = Ember.Object.create(
 
     show: (name) ->
         @get(name).show()
-    
+
     toggle: (name) ->
         @get(name).toggle()
+
+    confirm: (controller, title, message, confirmButtonTitle = "Confirm", cancelButtonTitle = "Cancel") ->
+        body = Ember.View.extend(
+            template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
+        )
+        buttons = [
+            Ember.Object.create({title: confirmButtonTitle, clicked:"modalConfirmed", dismiss: 'modal'})
+            Ember.Object.create({title: cancelButtonTitle, clicked:"modalCanceled", dismiss: 'modal'})
+        ]
+        @open('confirm-modal', title || 'Confirmation required!', body, buttons, controller)
+
+    openModal: (modalView, options = {}) ->
+        rootElement = options.rootElement or '.ember-application'
+        instance = modalView.create options
+        instance.appendTo rootElement
 
     open: (name, title, view, footerButtons, controller) ->
         cl = controller.container.lookup 'component-lookup:main'
@@ -142,6 +162,7 @@ Bootstrap.ModalManager = Ember.Object.create(
 
         modalComponent.appendTo(controller.namespace.rootElement)
 )
+
 
 Ember.Application.initializer
     name: 'bs-modal'

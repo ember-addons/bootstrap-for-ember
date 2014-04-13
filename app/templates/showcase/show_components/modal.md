@@ -52,6 +52,80 @@ Showcase.ShowComponentsModalController = Ember.Controller.extend({
 NOTE: The buttons defined in the array object can contain the same attributes as the button component. For example: for a 'danger' button, add "type='danger'" to the object defining the button.
 
 
+## Confirmation Modal
+For a simple confirmation modal, you can simply invoke `Bootstrap.ModalManager.confirm(this);`
+
+<div class="bs-example">
+    {{bs-button title="Delete" clicked="confirm"}}
+</div>
+
+``` html
+\{\{bs-button title="Delete" clicked="confirm"\}\}
+```
+
+_Controller's code_:
+
+``` javascript
+Showcase.ShowComponentsModalController = Ember.Controller.extend({
+    confirm: {
+        confirm: {
+            Bootstrap.ModalManager.confirm(@);
+        },
+        //invoked when user press "confirm"
+        modalConfirmed: {
+            Bootstrap.NM.push('Confirmed!', 'success')
+        },
+        //invoked when user press "cancel"
+        modalCanceled: {
+            Bootstrap.NM.push('Cancelled!', 'info')
+        }
+    }
+})
+```
+
+
+The `Bootstrap.ModalManager.confirm` method accept the following parameters:
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Property</th>
+                <th>Description</th>
+                <th>Optional?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>controller</td>
+                <td>A reference to the controller that the confirm/cancel actions will be triggered on</td>
+                <td>no</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>The title of the modal that.</td>
+                <td>yes</td>
+            </tr>
+            <tr>
+                <td>message</td>
+                <td>The body text of the modal.</td>
+                <td>yes</td>
+            </tr>
+            <tr>
+                <td>confirmButtonTitle</td>
+                <td>The title of the confirm button</td>
+                <td>yes</td>
+            </tr>
+            <tr>
+                <td>cancelButtonTitle</td>
+                <td>The title of the cancel button</td>
+                <td>yes</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 ## Programatically Modal Creation
 
 It is also possible to programatically create a modal, this approach is useful if the modal contains a lot of elements and it makes sense to push the modal elements into the DOM programatically and totally destroy the modal when it is closed.
