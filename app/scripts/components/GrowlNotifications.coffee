@@ -54,9 +54,9 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         ###
         init: ->
             @._super()
-            fn = (->
+            fn = (=>
                 @notifyPropertyChange "style"
-            ).bind(@)
+            )
             @set "_recomputeStyle", fn
             $(window).bind "resize", fn
 
@@ -66,10 +66,10 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         didInsertElement: ->
             #@$().fadeIn(@get('fadeInTime'))
             # Be prepared to auto-hide the notification
-            @set "timeoutId", setTimeout((->
+            @set "timeoutId", setTimeout((=>
                 #@send "close"
                 @send("close")
-            ).bind(this), @get("parentView.showTime"))
+            ), @get("parentView.showTime"))
 
             # Fade in the view.
             Ember.run.later this, (->
@@ -81,6 +81,7 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         ###
         willDestroyElement: ->
             $(window).unbind('resize', @get('_recomputeStyle'))
+
 
         style: (->
             notifications = @get('parentView.content').rejectProperty('closed', true)
@@ -116,11 +117,11 @@ Bootstrap.GrowlNotifications = Ember.CollectionView.extend (
         actions:
             close: ->
                 @set('isOpaque', false)
-                setTimeout (->
+                setTimeout (=>
                     @get('parentView.content').removeObject(@get('content'))
                     clearTimeout @get("timeoutId")
 
-                ).bind(@), 300
+                ), 300
     )
 )
 
