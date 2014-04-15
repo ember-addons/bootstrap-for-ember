@@ -9,17 +9,18 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type']
     _type: 'button'
     bubbles: true
+   allowedProperties: ['title', 'type', 'size', 'block', 'disabled', 'clicked', 'dismiss']
 
-    init: ->
-        @_super()
-        #If content is an object, then assign its properties to the button component
-        if @get('content')? and Ember.typeOf(@get('content')) is 'instance'
-            for key,val of @get('content')
-                @set key, val if key? and key != 'constructor'
-        else
-            if not @get('title')?
-                @set('title', @get('content'))
-            @attributeBindings.pushObject attr for attr of @ when attr.match(/^data-[\w-]*$/)?
+   init: ->
+       @_super()
+       # If content is an object (may happen when a button is the view class of a collectionView), then assign allowed properties to the button component.
+       if @get('content')? and Ember.typeOf(@get('content')) is 'instance'
+           c = @get('content')
+           @set key, c[key] for key in @get('allowedProperties') when c[key]?
+       else
+           if not @get('title')?
+               @set('title', @get('content'))
+       @attributeBindings.pushObject attr for attr of @ when attr.match(/^data-[\w-]*$/)?
 
     blockClass: ( ->
         if @block then "#{@classTypePrefix}-block" else null
