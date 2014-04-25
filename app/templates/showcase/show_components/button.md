@@ -48,6 +48,22 @@ In correspondence with bootstrap css class button sizes `.btn-lg`, `.btn-sm`, or
 \{\{#bs-button size="lg"\}\}Default Large button\{\{/bs-button\}\}
 ```
 
+## Icon
+
+<div class="bs-example">
+    <p>
+        {{bs-button icon="fa fa-check" title="Button with Icon"}}
+    <p>
+</div>
+
+Simply add an `icon` property to the button meta data, such:
+
+``` html
+\{\{bs-button icon="fa fa-check" title="Danger Default size button"\}\}
+```
+
+Will render an `<i class="fa fa-check"></i>` tag within the button tag.
+
 ## Block Level
 
 block level buttons—those that span the full width of a parent— by adding `block=true`

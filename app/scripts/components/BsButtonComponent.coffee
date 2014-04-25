@@ -9,7 +9,9 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
     attributeBindings: ['disabled', 'dismiss:data-dismiss', '_type:type']
     _type: 'button'
     bubbles: true
-   allowedProperties: ['title', 'type', 'size', 'block', 'disabled', 'clicked', 'dismiss']
+    allowedProperties: ['title', 'type', 'size', 'block', 'disabled', 'clicked', 'dismiss', 'class']
+    icon_active: undefined
+    icon_inactive: undefined
 
    init: ->
        @_super()
@@ -34,6 +36,10 @@ Bootstrap.BsButtonComponent = Ember.Component.extend(Bootstrap.TypeSupport, Boot
         loading = if @get('loading') isnt null then @get('loading') else "reset"
         Ember.$("##{@elementId}").button(loading)
     ).observes('loading')
+
+    icon: (->
+        if @get('isActive') then @get('icon_active') else @get('icon_inactive')
+    ).property('isActive')
 )
 
 Ember.Handlebars.helper 'bs-button', Bootstrap.BsButtonComponent

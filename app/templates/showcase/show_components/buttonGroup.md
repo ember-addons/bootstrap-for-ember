@@ -14,6 +14,25 @@ _content_ is an array of options, each option is rendered as a _button_ tag.
 
 **TODO: SHOW CODE**
 
+## Icons
+
+It is possible to set an icon for the selected button in a group or/and an icon for the in-active buttons by
+setting the `icon_active` and/or `icon_inactive` properties to the icon class name.
+
+<div class="bs-example">
+    {{bs-btn-group icon_inactive="fa fa-square-o" icon_active="fa fa-check-square-o" contentBinding="options" selectedBinding="selected"}}
+    <br/>
+    Controller say selected item is: {{selected}}
+</div>
+
+```html
+<div class="bs-example">
+    \{\{bs-btn-group icon_inactive="fa fa-square-o" icon_active="fa fa-check-square-o" contentBinding="options" selectedBinding="selected"\}\}
+    <br/>
+    Controller say selected item is: \{\{selected\}\}
+</div>
+```
+
 ## Button Toolbar
 
 Combine sets of bs-btn-groups into a bs-btn-toolbar for more complex components.
