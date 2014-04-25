@@ -4,22 +4,7 @@ Breadcrumbs compponent.
 Bootstrap.BsBreadcrumbsItem = Bootstrap.ItemView.extend(
     tagName: ['li']
     classNameBindings: ["isActive:active"]
-    template: Ember.Handlebars.compile '''
-        <i {{bindAttr class='view.content.icon'}}></i>
-        {{#unless view.isActive}}
-            {{#if view.content.model}}
-                {{#link-to view.content.route model.id}}
-                    {{view.content.name}}
-                {{/link-to}}
-            {{else}}
-                {{#link-to view.content.route}}
-                    {{view.content.name}}
-                {{/link-to}}
-            {{/if}}
-        {{else}}
-            {{view.content.name}}
-        {{/unless}}
-    '''
+    template: Ember.Handlebars.compile '{{#unless view.isActive}}{{#if view.content.model}}{{#link-to view.content.route model.id}}{{view.content.name}}{{/link-to}}{{else}}{{#link-to view.content.route}}{{view.content.name}}{{/link-to}}{{/if}}{{else}}{{view.content.name}}{{/unless}}'
 
     isActive: (->
         @get('content.active')
@@ -37,6 +22,7 @@ Bootstrap.BsBreadcrumbs = Bootstrap.ItemsView.extend(Bootstrap.WithRouter,
     content: []
     itemViewClass: Bootstrap.BsBreadcrumbsItem
     nameDictionary: undefined
+    dictionaryNamePrefix: 'breadcrumbs'
 
     actions:
         currentPathDidChange: ->
@@ -54,8 +40,8 @@ Bootstrap.BsBreadcrumbs = Bootstrap.ItemsView.extend(Bootstrap.WithRouter,
                 routeName = route.handler.routeName
                 if route.handler.breadcrumbs?.name
                     displayName = route.handler.breadcrumbs.name
-                else if @get('nameDictionary')?[routeName]
-                    displayName = @get('nameDictionary')[routeName]
+                else if @get('nameDictionary')?["#{@dictionaryNamePrefix}.#{routeName}"]
+                    displayName = @get('nameDictionary')["#{@dictionaryNamePrefix}.#{routeName}"]
                 else
                     displayName = route.handler.routeName.split('.').pop()
                     displayName = displayName[0].toUpperCase() + displayName[1..-1].toLowerCase()
@@ -65,7 +51,7 @@ Bootstrap.BsBreadcrumbs = Bootstrap.ItemsView.extend(Bootstrap.WithRouter,
                     name: displayName
                     model: null
 
-                crumb.set('icon', 'icon-home home-icon') if @get('content').length is 0
+                crumb.set('icon', 'fa fa-home home-icon') if @get('content').length is 0
 
                 if route.isDynamic
                     crumb.setProperties
