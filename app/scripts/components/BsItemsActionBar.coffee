@@ -1,7 +1,9 @@
 Bootstrap.ItemsActionBar = Ember.CollectionView.extend
     classNames: 'btn-toolbar'
+    classNameBindings: 'rtl:pull-right'
     role: 'toolbar'
     selectedItems: []
+    rtl: false
 
     selection: (->
         items = @get('selectedItems')
