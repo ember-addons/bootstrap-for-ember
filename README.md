@@ -15,11 +15,12 @@ using Bootstrap as is, see showcase!
 
 ### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember/dist)
 
+### Also visit our new [Ember Forms](http://ember-addons.github.io/ember-forms/#/overview) project
+
 ## Why?
 
 Because Bootstrap is awesome but using it as is for _Ember_ apps makes code dirty as the interaction with Controllers
 or other Ember components requires code wiring.
-
 
 This project is heavily based on [Ember Components](http://emberjs.com/guides/components/), which makes the usage of
 the components fun and doesnt ruin the simplicy of Bootstrap usage at all,
