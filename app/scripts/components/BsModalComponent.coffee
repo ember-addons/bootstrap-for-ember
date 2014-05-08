@@ -1,7 +1,7 @@
 ###
 Modal component.
 ###
-Bootstrap.BsModalComponent = Ember.Component.extend(
+Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
     layoutName: 'components/bs-modal'
     classNames: ['modal']
     #classNameBindings: ['fade']
@@ -63,6 +63,7 @@ Bootstrap.BsModalComponent = Ember.Component.extend(
 
     close: (event) ->
         if @get('manual') then @destroy() else @hide()
+        @trigger 'closed'
 
     #Invoked automatically by ember when the view is destroyed, giving us a chance to perform cleanups
     willDestroyElement: ->
