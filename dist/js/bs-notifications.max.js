@@ -44,6 +44,7 @@ Currently a single notification is displayed as an Alert on top of the screen, e
       }
     }).observes('content.length'),
     resetShowTime: function() {
+      var _this = this;
       this.$().css({
         display: 'block'
       });
@@ -55,7 +56,9 @@ Currently a single notification is displayed as an Alert on top of the screen, e
       if (this.showTimeTimeoutId != null) {
         clearTimeout(this.showTimeTimeoutId);
       }
-      return this.showTimeTimeoutId = setTimeout(this.fadeOut, this.showTime, this);
+      return this.showTimeTimeoutId = setTimeout(function() {
+        return _this.fadeOut(_this);
+      }, this.showTime);
     },
     fadeOut: function(that) {
       return that.$().fadeOut(that.fadeOutTime, function() {

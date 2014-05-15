@@ -45,11 +45,12 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
       */
 
       init: function() {
-        var fn;
+        var fn,
+          _this = this;
         this._super();
         fn = (function() {
-          return this.notifyPropertyChange("style");
-        }).bind(this);
+          return _this.notifyPropertyChange("style");
+        });
         this.set("_recomputeStyle", fn);
         return $(window).bind("resize", fn);
       },
@@ -58,9 +59,10 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
       */
 
       didInsertElement: function() {
+        var _this = this;
         this.set("timeoutId", setTimeout((function() {
-          return this.send("close");
-        }).bind(this), this.get("parentView.showTime")));
+          return _this.send("close");
+        }), this.get("parentView.showTime")));
         return Ember.run.later(this, (function() {
           return this.set("isOpaque", true);
         }), 1);
@@ -106,11 +108,12 @@ Originally written by Aaron Haurwitz (http://aaron.haurwitz.com/), licensed unde
       }).property('content.type'),
       actions: {
         close: function() {
+          var _this = this;
           this.set('isOpaque', false);
           return setTimeout((function() {
-            this.get('parentView.content').removeObject(this.get('content'));
-            return clearTimeout(this.get("timeoutId"));
-          }).bind(this), 300);
+            _this.get('parentView.content').removeObject(_this.get('content'));
+            return clearTimeout(_this.get("timeoutId"));
+          }), 300);
         }
       }
     })

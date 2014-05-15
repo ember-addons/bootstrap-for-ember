@@ -4,7 +4,7 @@ Modal component.
 
 
 (function() {
-  Bootstrap.BsModalComponent = Ember.Component.extend({
+  Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented, {
     layoutName: 'components/bs-modal',
     classNames: ['modal'],
     attributeBindings: ['role', 'aria-labelledby', 'isAriaHidden:aria-hidden', "ariaLabelledBy:aria-labelledby"],
@@ -13,6 +13,7 @@ Modal component.
     }).property('isVisible'),
     modalBackdrop: '<div class="modal-backdrop fade in"></div>',
     role: 'dialog',
+    footerViews: [],
     backdrop: true,
     title: null,
     isVisible: false,
@@ -70,10 +71,11 @@ Modal component.
     },
     close: function(event) {
       if (this.get('manual')) {
-        return this.destroy();
+        this.destroy();
       } else {
-        return this.hide();
+        this.hide();
       }
+      return this.trigger('closed');
     },
     willDestroyElement: function() {
       var name;
@@ -113,8 +115,12 @@ Modal component.
 
 
   Bootstrap.ModalManager = Ember.Object.create({
-    add: function(name, modalView) {
-      return this.set(name, modalView);
+    add: function(name, modalInstance) {
+      return this.set(name, modalInstance);
+    },
+    register: function(name, modalInstance) {
+      this.add(name, modalInstance);
+      return modalInstance.appendTo(modalInstance.get('targetObject').namespace.rootElement);
     },
     remove: function(name) {
       return this.set(name, null);
@@ -130,6 +136,39 @@ Modal component.
     },
     toggle: function(name) {
       return this.get(name).toggle();
+    },
+    confirm: function(controller, title, message, confirmButtonTitle, cancelButtonTitle) {
+      var body, buttons;
+      if (confirmButtonTitle == null) {
+        confirmButtonTitle = "Confirm";
+      }
+      if (cancelButtonTitle == null) {
+        cancelButtonTitle = "Cancel";
+      }
+      body = Ember.View.extend({
+        template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
+      });
+      buttons = [
+        Ember.Object.create({
+          title: confirmButtonTitle,
+          clicked: "modalConfirmed",
+          dismiss: 'modal'
+        }), Ember.Object.create({
+          title: cancelButtonTitle,
+          clicked: "modalCanceled",
+          dismiss: 'modal'
+        })
+      ];
+      return this.open('confirm-modal', title || 'Confirmation required!', body, buttons, controller);
+    },
+    openModal: function(modalView, options) {
+      var instance, rootElement;
+      if (options == null) {
+        options = {};
+      }
+      rootElement = options.rootElement || '.ember-application';
+      instance = modalView.create(options);
+      return instance.appendTo(rootElement);
     },
     open: function(name, title, view, footerButtons, controller) {
       var cl, modalComponent, template;
@@ -178,9 +217,23 @@ this["Ember"]["TEMPLATES"] = this["Ember"]["TEMPLATES"] || {};
 this["Ember"]["TEMPLATES"]["components/bs-modal"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
+  
+  var buffer = '', stack1, hashContexts, hashTypes, options;
+  data.buffer.push("\n                    <i ");
+  hashContexts = {'class': depth0};
+  hashTypes = {'class': "STRING"};
+  options = {hash:{
+    'class': ("titleIconClasses")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
+  data.buffer.push("></i>\n                ");
+  return buffer;
+  }
+
+function program3(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("\n                ");
@@ -191,7 +244,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("\n                ");
@@ -202,7 +255,7 @@ function program3(depth0,data) {
   return buffer;
   }
 
-function program5(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes, options;
   data.buffer.push("\n                ");
@@ -217,19 +270,43 @@ function program5(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n            <h4 class=\"modal-title\">");
+function program9(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n                ");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "title", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</h4>\n        </div>\n        <div class=\"modal-body\">\n            ");
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n            ");
+  return buffer;
+  }
+
+  data.buffer.push("<div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n            <h4 class=\"modal-title\">\n                ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers['if'].call(depth0, "body", {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "titleIconClasses", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n                ");
+  hashContexts = {'unescaped': depth0};
+  hashTypes = {'unescaped': "STRING"};
+  stack1 = helpers._triageMustache.call(depth0, "title", {hash:{
+    'unescaped': ("true")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n            </h4>\n        </div>\n        <div class=\"modal-body\">\n            ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers['if'].call(depth0, "body", {hash:{},inverse:self.program(5, program5, data),fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n        </div>\n        <div class=\"modal-footer\">\n            ");
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.each.call(depth0, "footerButtons", {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers.each.call(depth0, "footerButtons", {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n            ");
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers.each.call(depth0, "footerViews", {hash:{},inverse:self.noop,fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n        </div>\n    </div>\n</div>");
   return buffer;
