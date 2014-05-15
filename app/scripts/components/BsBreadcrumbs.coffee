@@ -1,5 +1,5 @@
 ###
-Breadcrumbs compponent.
+Breadcrumbs component.
 ###
 Bootstrap.BsBreadcrumbsItem = Bootstrap.ItemView.extend(
     tagName: ['li']
