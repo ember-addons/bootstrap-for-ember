@@ -13,7 +13,7 @@ using Bootstrap as is, see showcase!
 
 > A picture is worth a thousand words
 
-### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember/dist)
+### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember)
 
 ### Also visit our new [Ember Forms](http://ember-addons.github.io/ember-forms/#/overview) project
 
