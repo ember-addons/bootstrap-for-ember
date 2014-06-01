@@ -32,9 +32,11 @@ Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
             @show()
 
     becameVisible: ->
+        Em.$('body').addClass('modal-open')
         @appendBackdrop() if @get("backdrop")
 
     becameHidden: ->
+        Em.$('body').removeClass('modal-open')
         @_backdrop.remove() if @_backdrop
 
     appendBackdrop: ->
@@ -67,6 +69,7 @@ Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
 
     #Invoked automatically by ember when the view is destroyed, giving us a chance to perform cleanups
     willDestroyElement: ->
+        Em.$('body').removeClass('modal-open')
         @removeHandlers()
         name = @get('name')
         name?= @get('elementId')
