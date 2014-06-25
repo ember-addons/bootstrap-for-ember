@@ -140,22 +140,22 @@ Bootstrap.ModalManager = Ember.Object.create(
     toggle: (name) ->
         @get(name).toggle()
 
-    confirm: (controller, title, message, confirmButtonTitle = "Confirm", cancelButtonTitle = "Cancel", targetObj = controller, fade = true, fullSizeButtons = false) ->
+    confirm: (controller, title, message, confirmButtonTitle = "Confirm", confirmButtonEvent = "modalConfirmed",confirmButtonType = null, cancelButtonTitle = "Cancel", cancelButtonEvent = "modalCanceled",cancelButtonType = null, targetObj = controller, fade = true, fullSizeButtons = false) ->
         body = Ember.View.extend(
             template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
         )
         buttons = [
-            Ember.Object.create({title: confirmButtonTitle, clicked:"modalConfirmed", dismiss: 'modal'})
-            Ember.Object.create({title: cancelButtonTitle, clicked:"modalCanceled", dismiss: 'modal'})
+            Ember.Object.create({title: confirmButtonTitle, clicked: confirmButtonEvent, type: confirmButtonType, dismiss: 'modal'})
+            Ember.Object.create({title: cancelButtonTitle, clicked: cancelButtonEvent, type: cancelButtonType, dismiss: 'modal'})
         ]
         @open('confirm-modal', title || 'Confirmation required!', body, buttons, controller, fade, fullSizeButtons, targetObj)
 		
-	okModal: (controller, title, message, okButtonTitle = "OK", okButtonEvent = "okModal", targetObj = controller, fade = true, fullSizeButtons = false) ->
+	okModal: (controller, title, message, okButtonTitle = "OK", okButtonEvent = "okModal", okButtonType = null, targetObj = controller, fade = true, fullSizeButtons = false) ->
         body = Ember.View.extend(
             template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
         )
         buttons = [
-            Ember.Object.create({title: okButtonTitle, clicked:okButtonEvent, dismiss: 'modal'})
+            Ember.Object.create({title: okButtonTitle, clicked:okButtonEvent, type: okButtonType, dismiss: 'modal'})
         ]
         @open('ok-modal', title || 'Confirmation required!', body, buttons, controller, fade, fullSizeButtons, targetObj)
 
