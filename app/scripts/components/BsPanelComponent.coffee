@@ -21,7 +21,7 @@ Bootstrap.BsPanelComponent = Ember.Component.extend(Bootstrap.TypeSupport,
             ).bind(@), 250
 
     click: (event) ->
-        @sendAction('clicked')
+        @sendAction('clicked', event)
 
     collapsibleBodyId: (->
         "#{@get('elementId')}_body"
