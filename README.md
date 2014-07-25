@@ -15,7 +15,8 @@ using Bootstrap as is, see showcase!
 
 ### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember)
 
-### Also visit our new [Ember Forms](http://ember-addons.github.io/ember-forms/#/overview) project
+### For forms components, take a look at [Ember Forms](http://indexiatech.github.io/ember-forms) project
+### For new rich set of UI components (not specifically for Bootstrap) look at [Ember Components](http://indexiatech.github.io/ember-components/#/overview)
 
 ## Why?
 
