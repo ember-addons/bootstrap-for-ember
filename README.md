@@ -13,10 +13,10 @@ using Bootstrap as is, see showcase!
 
 > A picture is worth a thousand words
 
-### [See ShowCase](http://ember-addons.github.io/bootstrap-for-ember)
+#### Bootstrap for Ember [ShowCase](http://ember-addons.github.io/bootstrap-for-ember)
 
-### For forms components, take a look at [Ember Forms](http://indexiatech.github.io/ember-forms) project
-### For new rich set of UI components (not specifically for Bootstrap) look at [Ember Components](http://indexiatech.github.io/ember-components/#/overview)
+#### For forms components, take a look at [Ember Forms](http://indexiatech.github.io/ember-forms) project
+#### For new rich set of UI components (not specifically for Bootstrap) look at [Ember Components](http://indexiatech.github.io/ember-components/#/overview)
 
 ## Why?
 
