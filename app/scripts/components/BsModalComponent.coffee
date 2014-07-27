@@ -4,7 +4,7 @@ Modal component.
 Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
     layoutName: 'components/bs-modal'
     classNames: ['modal']
-    #classNameBindings: ['fade']
+    classNameBindings: ['fade', 'isVis:in']
     attributeBindings: ['role', 'aria-labelledby', 'isAriaHidden:aria-hidden', "ariaLabelledBy:aria-labelledby"]
     isAriaHidden: (->
         "#{@get('isVisible')}"
@@ -18,7 +18,10 @@ Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
     title: null
     isVisible: false
     manual: false
-
+    isVis: false
+    fullSizeButtons: false
+    fade: true
+    
     didInsertElement: ->
         @._super()
         @setupBinders()
@@ -45,9 +48,20 @@ Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
 
     show: ->
         @set 'isVisible', true
+        current = this
+        setTimeout (->
+            current.set 'isVis', true
+            return
+        ), 15
+        return
 
     hide: ->
-        @set 'isVisible', false
+        @set 'isVis', false
+        current = this
+        @$().one 'webkitTransitionEnd', (e) ->
+            current.set 'isVisible', false
+            return
+        false
 
     toggle: ->
         @toggleProperty 'isVisible'
@@ -64,8 +78,13 @@ Bootstrap.BsModalComponent = Ember.Component.extend(Ember.Evented,
             @close event
 
     close: (event) ->
-        if @get('manual') then @destroy() else @hide()
-        @trigger 'closed'
+        @set 'isVis', false
+        current = this
+        @$().one 'webkitTransitionEnd', (e) ->
+            if current.get('manual') then current.destroy() else current.hide()
+            return
+         @trigger 'closed'
+        
 
     #Invoked automatically by ember when the view is destroyed, giving us a chance to perform cleanups
     willDestroyElement: ->
@@ -121,22 +140,31 @@ Bootstrap.ModalManager = Ember.Object.create(
     toggle: (name) ->
         @get(name).toggle()
 
-    confirm: (controller, title, message, confirmButtonTitle = "Confirm", cancelButtonTitle = "Cancel") ->
+    confirm: (controller, title, message, confirmButtonTitle = "Confirm", confirmButtonEvent = "modalConfirmed",confirmButtonType = null, cancelButtonTitle = "Cancel", cancelButtonEvent = "modalCanceled",cancelButtonType = null, targetObj = controller, fade = true, fullSizeButtons = false) ->
         body = Ember.View.extend(
             template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
         )
         buttons = [
-            Ember.Object.create({title: confirmButtonTitle, clicked:"modalConfirmed", dismiss: 'modal'})
-            Ember.Object.create({title: cancelButtonTitle, clicked:"modalCanceled", dismiss: 'modal'})
+            Ember.Object.create({title: confirmButtonTitle, clicked: confirmButtonEvent, type: confirmButtonType, dismiss: 'modal'})
+            Ember.Object.create({title: cancelButtonTitle, clicked: cancelButtonEvent, type: cancelButtonType, dismiss: 'modal'})
         ]
-        @open('confirm-modal', title || 'Confirmation required!', body, buttons, controller)
+        @open('confirm-modal', title || 'Confirmation required!', body, buttons, controller, fade, fullSizeButtons, targetObj)
+		
+	okModal: (controller, title, message, okButtonTitle = "OK", okButtonEvent = "okModal", okButtonType = null, targetObj = controller, fade = true, fullSizeButtons = false) ->
+        body = Ember.View.extend(
+            template: Ember.Handlebars.compile(message || "Are you sure you would like to perform this action?")
+        )
+        buttons = [
+            Ember.Object.create({title: okButtonTitle, clicked:okButtonEvent, type: okButtonType, dismiss: 'modal'})
+        ]
+        @open('ok-modal', title || 'Confirmation required!', body, buttons, controller, fade, fullSizeButtons, targetObj)
 
     openModal: (modalView, options = {}) ->
         rootElement = options.rootElement or '.ember-application'
         instance = modalView.create options
         instance.appendTo rootElement
 
-    open: (name, title, view, footerButtons, controller) ->
+    open: (name, title, view, footerButtons, controller, fade , fullSizeButtons = false, targetObj = controller) ->
         cl = controller.container.lookup 'component-lookup:main'
         modalComponent = cl.lookupFactory('bs-modal', controller.get('container')).create()
 
@@ -145,7 +173,9 @@ Bootstrap.ModalManager = Ember.Object.create(
             title: title
             manual: true
             footerButtons: footerButtons
-            targetObject: controller
+            targetObject: targetObj
+            fade: fade
+            fullSizeButtons: fullSizeButtons
         )
 
         if Ember.typeOf(view) is 'string'
