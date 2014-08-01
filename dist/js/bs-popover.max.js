@@ -12,30 +12,14 @@
   Bootstrap.BsPopoverComponent = Ember.Component.extend({
     layoutName: 'components/bs-popover',
     classNames: "popover",
-    classNameBindings: ["fade", "in", "top", "left", "right", "bottom"],
-    top: (function() {
-      return this.get("realPlacement") === "top";
-    }).property("realPlacement"),
-    left: (function() {
-      return this.get("realPlacement") === "left";
-    }).property("realPlacement"),
-    right: (function() {
-      return this.get("realPlacement") === "right";
-    }).property("realPlacement"),
-    bottom: (function() {
-      return this.get("realPlacement") === "bottom";
-    }).property("realPlacement"),
+    classNameBindings: ["fade", "in", "realPlacement"],
     titleBinding: "data.title",
     content: Ember.computed.alias('data.content'),
     html: false,
     delay: 0,
     animation: true,
-    fade: (function() {
-      return this.get("animation");
-    }).property("animation"),
-    "in": (function() {
-      return this.get("isVisible");
-    }).property("isVisible"),
+    fade: Ember.computed.oneWay("animation"),
+    "in": Ember.computed.oneWay("isVisible"),
     placement: (function() {
       return this.get("data.placement") || "top";
     }).property("data.placement"),
