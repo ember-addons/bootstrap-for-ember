@@ -335,6 +335,7 @@ module.exports = function (grunt) {
                     namespace: "Ember.TEMPLATES"
                 },
                 files: {
+                    '.tmp/scripts/bs-core.js': '<%= yeoman.app %>/templates/views/item-pane.hbs',
                     '.tmp/scripts/bs-basic.js': [
                         '<%= yeoman.app %>/templates/components/bs-page-header.hbs',
                         '<%= yeoman.app %>/templates/components/bs-well.hbs',

@@ -1,9 +1,5 @@
 Bootstrap.ItemPaneView = Ember.View.extend(
-    template: Ember.Handlebars.compile [
-        '{{#if view.content.template}}'
-        '{{bsItemPanePartial view.content.template}}'
-        '{{/if}}'
-    ].join("\n")
+    templateName: 'views/item-pane'
 
     corrItem: (->
         if @get('parentView').get('corrItemsView')?
