@@ -423,6 +423,8 @@ Bootstrap.TooltipBoxManager = Ember.Object.create(
           object[name] = ""
           binding = Ember.Binding.from(p).to(name)
           binding.connect object
+        else
+          object.set name, value
     object
 )
 
