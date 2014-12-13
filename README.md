@@ -1,4 +1,14 @@
-#### For new rich set of UI components look at [Ember Components](http://indexiatech.github.io/ember-components/#/overview)
+#### This project is deprecated, why?
+
+While this project is currently used in many production applications, we have decided to discontinue the development for the development of our new rich components available here: http://indexiatech.github.io/ember-components
+
+There are several advantaged for using [Indexia Ember Components](http://indexiatech.github.io/ember-components), some of them are:
+
+* Components were refactored and designed much better.
+* Components are Ember-Cli addons for easy integration.
+* Components are splitted into addons in order to avoid blowing up the app size with unneccessary bits.
+
+For more info see: http://indexiatech.github.io/ember-components/#/overview
 
 
 # Bootstrap for Ember
