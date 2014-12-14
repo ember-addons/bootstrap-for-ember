@@ -329,8 +329,7 @@ module.exports = function (grunt) {
             compile_components: {
                 options: {
                     templateName: function(filename) {
-                        var fromComponent = filename.substring(filename.lastIndexOf('/components/')+1,filename.length);
-                        return fromComponent.substring(0,fromComponent.length-4);
+                        return filename.substring(filename.lastIndexOf('/components/')+1,filename.length);
                     },
                     namespace: "Ember.TEMPLATES"
                 },
@@ -357,8 +356,7 @@ module.exports = function (grunt) {
             compile_showcase: {
                 options: {
                     templateName: function(filename) {
-                        var fromShowcase = filename.substring(filename.lastIndexOf('/showcase/')+1,filename.length)
-                        return fromShowcase.substring(fromShowcase.indexOf('/')+1,fromShowcase.length-4);
+                        return filename.substring(filename.lastIndexOf('/showcase/')+1,filename.length).replace('showcase/', '');
                     },
                     namespace: "Ember.TEMPLATES"
                 },
