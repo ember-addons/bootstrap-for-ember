@@ -1,3 +1,21 @@
+# Please use our CLI-ADDONS intead
+
+We rewrote almost all components from scratch and packed them as Ember-Addons,
+Please avoid using this project and use the separated components instead:
+
+- [x] [Idx Forms Components](https://github.com/indexiatech/ember-forms)
+- [x] [Idx Button Component](https://github.com/indexiatech/ember-idx-button)
+- [x] [Idx Modal Component](https://github.com/indexiatech/ember-idx-modal)
+- [x] [Idx Tree Component](https://github.com/indexiatech/ember-idx-tree)
+- [x] [Idx Charts Component](https://github.com/indexiatech/ember-idx-charts)
+- [x] [Idx Tabs Component](https://github.com/indexiatech/ember-idx-tabs)
+- [x] [Idx Tour Component](https://github.com/indexiatech/ember-idx-tour)
+- [x] [Idx WYSIWYG Component](https://github.com/indexiatech/ember-idx-wysiwyg)
+- [x] [Idx Accordion Component](https://github.com/indexiatech/ember-idx-accordion)
+- [x] [Idx List Component](https://github.com/indexiatech/ember-idx-list)
+
+If you find a useful component in this project that does not exist yet as an addon you can post an issue [here](https://github.com/indexiatech/ember-components).
+
 #### This project is deprecated, why?
 
 While this project is currently used in many production applications, we have decided to discontinue the development for the development of our new rich components available here: http://indexiatech.github.io/ember-components
