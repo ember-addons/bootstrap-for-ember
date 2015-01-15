@@ -37,9 +37,9 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server']
             },
-            ember_handlebars: {
+            ember_templates: {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
-                tasks: ['ember_handlebars']
+                tasks: ['ember_templates']
             },
             markdown: {
                 files: '<%= yeoman.app %>/templates/**/*.md',
@@ -309,7 +309,7 @@ module.exports = function (grunt) {
             server: [
                 'compass',
                 'markdown',
-                'ember_handlebars',
+                'ember_templates',
                 'coffee:dist'
             ],
             test: [
@@ -318,19 +318,18 @@ module.exports = function (grunt) {
             dist: [
                 'coffee',
                 'markdown',
-                'ember_handlebars',
+                'ember_templates',
                 'compass',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
             ]
         },
-        ember_handlebars: {
+        ember_templates: {
             compile_components: {
                 options: {
-                    processName: function(filename) {
-                        var fromComponent = filename.substring(filename.lastIndexOf('/components/')+1,filename.length);
-                        return fromComponent.substring(0,fromComponent.length-4);
+                    templateName: function(filename) {
+                        return filename.substring(filename.lastIndexOf('/components/')+1,filename.length);
                     },
                     namespace: "Ember.TEMPLATES"
                 },
@@ -356,9 +355,8 @@ module.exports = function (grunt) {
             },
             compile_showcase: {
                 options: {
-                    processName: function(filename) {
-                        var fromShowcase = filename.substring(filename.lastIndexOf('/showcase/')+1,filename.length)
-                        return fromShowcase.substring(fromShowcase.indexOf('/')+1,fromShowcase.length-4);
+                    templateName: function(filename) {
+                        return filename.substring(filename.lastIndexOf('/showcase/')+1,filename.length).replace('showcase/', '');
                     },
                     namespace: "Ember.TEMPLATES"
                 },
