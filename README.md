@@ -1,4 +1,4 @@
-# Please use our CLI-ADDONS intead
+# Please use our CLI-ADDONS instead
 
 We rewrote almost all components from scratch and packed them as Ember-Addons,
 Please avoid using this project and use the separated components instead:
